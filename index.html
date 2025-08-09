@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Français avec Moi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header id="main-menu">
+        <div class="logo">Français avec Moi</div>
+        <nav>
+            <button data-target="word-list-section" class="nav-button">Zoznam Slovíčok</button>
+            <button data-target="flashcards-section" class="nav-button">Flashcards</button>
+            <button data-target="learn-section" class="nav-button">Učiť sa</button>
+            <button data-target="exercises-section" class="nav-button">Cvičenia</button>
+            <button data-target="settings-section" class="nav-button"><i class="fas fa-cog"></i></button>
+        </nav>
+    </header>
+
+    <main id="app-content">
+        <section id="home-section" class="app-section active">
+            <div class="welcome-container">
+                <h1>Bienvenue!</h1>
+                <p>Vitajte vo vašej osobnej aplikácii na učenie francúzštiny.</p>
+                <p>Vyberte si sekciu z horného menu a začnite.</p>
+                <div class="flag-divider">
+                    <div class="blue"></div>
+                    <div class="white"></div>
+                    <div class="red"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="word-list-section" class="app-section">
+            <h2><i class="fas fa-list-ul"></i> Zoznam Slovíčok</h2>
+            <div id="word-list-container" class="word-list-grid">
+                </div>
+        </section>
+
+        <section id="flashcards-section" class="app-section">
+            <h2><i class="fas fa-clone"></i> Flashcards</h2>
+            <div id="flashcard-container">
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            </div>
+                        <div class="flashcard-back">
+                            </div>
+                    </div>
+                </div>
+                <div class="flashcard-controls">
+                    <button id="prev-flashcard"><i class="fas fa-arrow-left"></i> Späť</button>
+                    <button id="speak-flashcard"><i class="fas fa-volume-up"></i> Prehrať zvuk</button>
+                    <button id="next-flashcard">Ďalšia <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="learn-section" class="app-section">
+            <h2><i class="fas fa-graduation-cap"></i> Učiť sa</h2>
+            <div id="learn-container">
+                <div class="presentation-selector">
+                    <button class="presentation-btn active" data-presentation="presentation1">Francúzske Členy (des, de la, un...)</button>
+                    <button class="presentation-btn" data-presentation="presentation2">Maison d'être + Avoir</button>
+                </div>
+                <div id="presentation-content">
+                    </div>
+            </div>
+        </section>
+
+        <section id="exercises-section" class="app-section">
+            <h2><i class="fas fa-pencil-alt"></i> Cvičenia</h2>
+            <div id="exercise-container">
+                <div class="exercise-task">
+                    <p id="exercise-question">Načítavam úlohu...</p>
+                    <div id="exercise-options"></div>
+                    <button id="check-answer-btn">Skontrolovať</button>
+                </div>
+                <div id="exercise-feedback" class="feedback-hidden">
+                    <p id="feedback-text"></p>
+                    <p id="feedback-explanation"></p>
+                    <button id="next-exercise-btn">Ďalšia úloha</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="settings-section" class="app-section">
+            <h2><i class="fas fa-cog"></i> Nastavenia</h2>
+            <div class="settings-container">
+                <h3>Výber hlasu</h3>
+                <p>Vyberte si preferovaný francúzsky hlas pre výslovnosť. Vaša voľba sa uloží.</p>
+                <div class="voice-selector-container">
+                    <select id="voice-select">
+                        <option value="">Načítavam hlasy...</option>
+                    </select>
+                    <button id="test-voice-btn">Otestovať hlas</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="word-card-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-card-inner">
+                </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
