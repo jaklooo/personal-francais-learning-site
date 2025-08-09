@@ -87,7 +87,7 @@ Tento projekt je voľne dostupný na vzdelávacie účely.
 
 ## 👨‍💻 **Autor**
 
-Vytvorené s pomocou GitHub Copilot pre efektívne učenie sa francúzskeho jazyka.
+Marek Jaklovský s pomocou GitHub Copilot pre efektívne učenie sa francúzskeho jazyka.
 
 ---
 
