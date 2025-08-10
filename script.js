@@ -605,29 +605,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Načítaj obľúbené z Firebase
     async function loadFavoritesFromCloud() {
         if (!currentUser) {
+            console.log('Žiadny prihlásený používateľ - načítavam z localStorage');
             loadFavorites(); // Fallback na localStorage
             return;
         }
         
+        console.log('Načítavam obľúbené z cloudu pre:', currentUser.email);
+        
         try {
-            const doc = await db.collection('users').doc(currentUser.uid).get();
+            const docRef = db.collection('userFavorites').doc(currentUser.uid);
+            const doc = await docRef.get();
+            
             if (doc.exists) {
                 const data = doc.data();
-                if (data.favorites) {
+                console.log('Nájdené dáta v cloude:', data);
+                
+                if (data.favorites && Array.isArray(data.favorites)) {
                     favoriteWords = new Set(data.favorites);
-                    console.log('Načítané obľúbené z cloudu:', data.favorites.length);
+                    console.log('✅ Načítané obľúbené z cloudu:', data.favorites.length, 'slovíčok');
                 } else {
-                    // Ak v cloude nič nie je, načítaj z localStorage a synchronizuj
+                    console.log('Žiadne obľúbené v cloude - načítavam z localStorage');
                     loadFavorites();
+                    // Ak má lokálne obľúbené, prenesi ich do cloudu
                     if (favoriteWords.size > 0) {
-                        saveFavoritesToCloud();
+                        console.log('Prenášam lokálne obľúbené do cloudu...');
+                        await saveFavoritesToCloud();
                     }
                 }
             } else {
+                console.log('Dokument neexistuje - prvé prihlásenie');
                 // Prvýkrát - načítaj z localStorage a ulož do cloudu
                 loadFavorites();
                 if (favoriteWords.size > 0) {
-                    saveFavoritesToCloud();
+                    console.log('Prenášam lokálne obľúbené do cloudu...');
+                    await saveFavoritesToCloud();
                 }
             }
             
@@ -635,29 +646,41 @@ document.addEventListener('DOMContentLoaded', () => {
             updateAllFavoritesAfterLoad();
             
         } catch (error) {
-            console.error('Chyba pri načítavaní z cloudu:', error);
+            console.error('❌ Chyba pri načítavaní z cloudu:', error);
+            console.log('Fallback na localStorage');
             // Fallback na localStorage
             loadFavorites();
+            updateAllFavoritesAfterLoad();
         }
     }
 
     // Ulož obľúbené do Firebase
     async function saveFavoritesToCloud() {
         if (!currentUser) {
+            console.log('Žiadny prihlásený používateľ - ukladám len do localStorage');
             saveFavorites(); // Fallback na localStorage
             return;
         }
         
+        console.log('Ukladám obľúbené do cloudu pre:', currentUser.email);
+        console.log('Počet obľúbených na uloženie:', favoriteWords.size);
+        
         try {
-            await db.collection('users').doc(currentUser.uid).set({
-                favorites: [...favoriteWords],
-                lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
-            }, { merge: true });
+            const docRef = db.collection('userFavorites').doc(currentUser.uid);
+            const favoritesArray = [...favoriteWords];
             
-            console.log('Obľúbené uložené do cloudu');
+            await docRef.set({
+                userId: currentUser.uid,
+                email: currentUser.email,
+                favorites: favoritesArray,
+                lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            
+            console.log('✅ Obľúbené úspešne uložené do cloudu:', favoritesArray.length, 'slovíčok');
             
         } catch (error) {
-            console.error('Chyba pri ukladaní do cloudu:', error);
+            console.error('❌ Chyba pri ukladaní do cloudu:', error);
+            console.log('Detaily chyby:', error.code, error.message);
         }
         
         // Vždy ulož aj do localStorage ako backup
@@ -686,11 +709,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Pridaj/odstráň slovíčko z obľúbených
     function toggleFavorite(wordFr) {
+        const wasAdded = !favoriteWords.has(wordFr);
+        
         if (favoriteWords.has(wordFr)) {
             favoriteWords.delete(wordFr);
+            console.log('🗑️ Odstránené z obľúbených:', wordFr);
         } else {
             favoriteWords.add(wordFr);
+            console.log('⭐ Pridané do obľúbených:', wordFr);
         }
+        
+        console.log('Celkový počet obľúbených:', favoriteWords.size);
         
         // Ulož do Firebase a localStorage
         saveFavoritesToCloud();
