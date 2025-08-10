@@ -503,9 +503,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Prihlásený používateľ:', user.email);
             loadFavoritesFromCloud();
         } else {
-            console.log('Používateľ nie je prihlásený');
-            // Načítaj z localStorage ako fallback
-            loadFavorites();
+            console.log('Používateľ nie je prihlásený - mažem obľúbené');
+            // Vymaž všetky obľúbené pri odhlásení
+            favoriteWords.clear();
+            localStorage.removeItem('favoriteWords');
+            updateAllFavoritesAfterLoad();
         }
     });
 
@@ -565,10 +567,15 @@ document.addEventListener('DOMContentLoaded', () => {
     async function logoutUser() {
         try {
             await auth.signOut();
-            console.log('Používateľ odhlásený');
-            // Vymaž lokálne obľúbené
+            console.log('Používateľ odhlásený - mažem všetky lokálne dáta');
+            
+            // Vymaž kompletne všetky obľúbené z prehliadača
             favoriteWords.clear();
+            localStorage.removeItem('favoriteWords');
+            
+            // Aktualizuj UI - zmizne všetko
             updateAllFavoritesAfterLoad();
+            
         } catch (error) {
             console.error('Chyba pri odhlásení:', error);
         }
@@ -605,8 +612,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Načítaj obľúbené z Firebase
     async function loadFavoritesFromCloud() {
         if (!currentUser) {
-            console.log('Žiadny prihlásený používateľ - načítavam z localStorage');
-            loadFavorites(); // Fallback na localStorage
+            console.log('❌ Žiadny prihlásený používateľ - obľúbené sa nenačítajú');
+            favoriteWords.clear();
+            updateAllFavoritesAfterLoad();
             return;
         }
         
@@ -624,22 +632,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     favoriteWords = new Set(data.favorites);
                     console.log('✅ Načítané obľúbené z cloudu:', data.favorites.length, 'slovíčok');
                 } else {
-                    console.log('Žiadne obľúbené v cloude - načítavam z localStorage');
-                    loadFavorites();
-                    // Ak má lokálne obľúbené, prenesi ich do cloudu
-                    if (favoriteWords.size > 0) {
-                        console.log('Prenášam lokálne obľúbené do cloudu...');
-                        await saveFavoritesToCloud();
-                    }
+                    console.log('Žiadne obľúbené v cloude - začíname s prázdnym zoznamom');
+                    favoriteWords.clear();
                 }
             } else {
                 console.log('Dokument neexistuje - prvé prihlásenie');
-                // Prvýkrát - načítaj z localStorage a ulož do cloudu
-                loadFavorites();
-                if (favoriteWords.size > 0) {
-                    console.log('Prenášam lokálne obľúbené do cloudu...');
-                    await saveFavoritesToCloud();
-                }
+                favoriteWords.clear();
             }
             
             // Aktualizuj UI po načítaní
@@ -647,9 +645,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
         } catch (error) {
             console.error('❌ Chyba pri načítavaní z cloudu:', error);
-            console.log('Fallback na localStorage');
-            // Fallback na localStorage
-            loadFavorites();
+            // Pri chybe vymaž všetko
+            favoriteWords.clear();
             updateAllFavoritesAfterLoad();
         }
     }
@@ -657,8 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ulož obľúbené do Firebase
     async function saveFavoritesToCloud() {
         if (!currentUser) {
-            console.log('Žiadny prihlásený používateľ - ukladám len do localStorage');
-            saveFavorites(); // Fallback na localStorage
+            console.log('❌ Žiadny prihlásený používateľ - obľúbené sa neuložia');
             return;
         }
         
@@ -683,8 +679,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Detaily chyby:', error.code, error.message);
         }
         
-        // Vždy ulož aj do localStorage ako backup
-        saveFavorites();
+        // NEULOŽ do localStorage - iba cloud storage
     }
 
     // Aktualizuj celé UI po načítaní obľúbených
@@ -709,6 +704,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Pridaj/odstráň slovíčko z obľúbených
     function toggleFavorite(wordFr) {
+        // Kontrola prihlásenia
+        if (!currentUser) {
+            alert('Pre uloženie obľúbených slovíčok sa musíte prihlásiť!');
+            // Otvor prihlásenie
+            document.getElementById('login-btn').click();
+            return;
+        }
+        
         const wasAdded = !favoriteWords.has(wordFr);
         
         if (favoriteWords.has(wordFr)) {
@@ -721,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         console.log('Celkový počet obľúbených:', favoriteWords.size);
         
-        // Ulož do Firebase a localStorage
+        // Ulož IBA do cloudu (nie localStorage)
         saveFavoritesToCloud();
         
         // Aktualizuj UI vo všetkých sekciách
