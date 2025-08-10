@@ -36,19 +36,40 @@
 
         <section id="word-list-section" class="app-section">
             <h2><i class="fas fa-list-ul"></i> Zoznam Slovíčok</h2>
-            <div id="word-list-container" class="word-list-grid">
+            
+            <!-- Výber kategórie -->
+            <div class="category-selector-container">
+                <h3>Vyberte kategóriu:</h3>
+                <div id="category-buttons" class="category-buttons">
+                    <!-- Kategórie sa načítajú dynamicky -->
                 </div>
+            </div>
+            
+            <!-- Kontajner pre slovíčka -->
+            <div id="word-list-container" class="word-list-grid" style="display: none;">
+                <!-- Slovíčka sa zobrazia po výbere kategórie -->
+            </div>
         </section>
 
         <section id="flashcards-section" class="app-section">
             <h2><i class="fas fa-clone"></i> Flashcards</h2>
+            
+            <!-- Výber kategórie pre flashcards -->
+            <div class="flashcard-category-selector-container">
+                <h3>Vyberte kategóriu pre flashcards:</h3>
+                <div id="flashcard-category-buttons" class="category-buttons">
+                    <!-- Kategórie sa načítajú dynamicky -->
+                </div>
+            </div>
+            
             <div id="flashcard-container">
                 <div class="flashcard">
                     <div class="flashcard-inner">
                         <div class="flashcard-front">
-                            </div>
+                            <i class="fas fa-star flashcard-favorite-star" id="flashcard-star"></i>
+                        </div>
                         <div class="flashcard-back">
-                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="flashcard-controls">

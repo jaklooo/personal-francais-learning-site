@@ -131,6 +131,97 @@ h2 {
 .flag-divider .red { background-color: var(--french-red); flex: 1; }
 
 
+/* Kategóriový selektor */
+.category-selector-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.category-selector-container h3 {
+    color: var(--french-blue);
+    font-family: var(--font-secondary);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Flashcard kategóriový selektor */
+.flashcard-category-selector-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.flashcard-category-selector-container h3 {
+    color: var(--french-blue);
+    font-family: var(--font-secondary);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    background: linear-gradient(135deg, var(--french-blue) 0%, #1a5f8a 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(46, 125, 138, 0.3);
+    font-family: var(--font-primary);
+}
+
+.category-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 125, 138, 0.4);
+    background: linear-gradient(135deg, #1a5f8a 0%, var(--french-blue) 100%);
+}
+
+.category-btn.selected {
+    background: linear-gradient(135deg, var(--french-red) 0%, #d42c2c 100%);
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.category-btn.selected:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+    background: linear-gradient(135deg, #d42c2c 0%, var(--french-red) 100%);
+}
+
+.category-info {
+    background: rgba(46, 125, 138, 0.1);
+    border-left: 4px solid var(--french-blue);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: left;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.category-info h4 {
+    color: var(--french-blue);
+    margin: 0 0 8px 0;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.category-info p {
+    color: #555;
+    margin: 0;
+    font-size: 0.95em;
+}
+
 /* Zoznam slovíčok */
 .word-list-grid {
     display: grid;
@@ -179,6 +270,70 @@ h2 {
 
 .speaker-icon:hover {
     color: var(--french-red);
+}
+
+/* Hviezdička na kartách */
+.favorite-star {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    font-size: 1.3em;
+    color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.favorite-star:hover {
+    color: #FFD700;
+    transform: scale(1.1);
+}
+
+.favorite-star.favorite {
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Zlaté pozadie pre obľúbené karty */
+.word-card.favorite {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    border: 2px solid #FFD700;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.word-card.favorite:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.word-card.favorite .word-card-fr {
+    color: #B8860B;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.word-card.favorite .word-card-sk {
+    color: #8B4513;
+}
+
+/* Zlatá kategória pre "Zopakuj si" */
+.category-btn[data-category="favorites"] {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #8B4513;
+    font-weight: 700;
+}
+
+.category-btn[data-category="favorites"]:hover {
+    background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.category-btn[data-category="favorites"].selected {
+    background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+    color: white;
+}
+
+.category-btn[data-category="favorites"].selected:hover {
+    background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
 }
 
 /* Modal pre zväčšenú kartu */
@@ -324,6 +479,12 @@ h2 {
     border: 5px solid var(--french-blue);
 }
 
+.flashcard-text {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
 .flashcard-back {
     background-color: var(--french-blue);
     color: var(--french-white);
@@ -354,6 +515,41 @@ h2 {
     background-color: var(--french-red);
     color: var(--french-white);
     border-color: var(--french-red);
+}
+
+/* Hviezdička vo flashcard */
+.flashcard-favorite-star {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5em;
+    color: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.flashcard-favorite-star:hover {
+    color: #FFD700;
+    transform: scale(1.2);
+}
+
+.flashcard-favorite-star.favorite {
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+/* Zlaté pozadie pre obľúbené flashcards */
+.flashcard.favorite .flashcard-front {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    border-color: #B8860B;
+    color: #8B4513;
+}
+
+.flashcard.favorite .flashcard-back {
+    background: linear-gradient(135deg, #B8860B 0%, #8B4513 100%);
+    color: #FFD700;
 }
 
 /* Sekcia Učiť sa */
@@ -390,29 +586,102 @@ h2 {
     font-size: 1.8em;
     margin-top: 20px;
 }
+
+#presentation-content h4 {
+    color: var(--french-blue);
+    font-size: 1.4em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--french-red);
+    padding-left: 15px;
+}
+
 #presentation-content p, #presentation-content li {
     font-size: 1.1em;
 }
+
 #presentation-content code {
     background: var(--light-gray);
     padding: 3px 6px;
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
     color: var(--french-red);
+    font-weight: bold;
 }
+
+/* Tabuľky v prezentáciách */
 #presentation-content table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
+
 #presentation-content th, #presentation-content td {
-    border: 1px solid #ddd;
-    padding: 12px;
+    padding: 12px 15px;
     text-align: left;
+    border: none;
+    border-bottom: 1px solid #eee;
 }
+
 #presentation-content th {
     background-color: var(--french-blue);
     color: var(--french-white);
+    font-weight: 600;
+}
+
+#presentation-content tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+#presentation-content tr:hover {
+    background-color: #e3f2fd;
+}
+
+/* Špeciálne štýly pre emotikony a zvýraznené sekcie */
+.emoji-header {
+    font-size: 1.3em;
+    color: var(--french-blue);
+    font-weight: 600;
+    margin: 25px 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tip-box {
+    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    border-left: 5px solid var(--french-blue);
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.negation-box {
+    background: linear-gradient(135deg, #ffebee, #fce4ec);
+    border-left: 5px solid var(--french-red);
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.example-box {
+    background: linear-gradient(135deg, #f1f8e9, #e8f5e8);
+    border-left: 5px solid #4caf50;
+    padding: 15px 20px;
+    margin: 15px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Rýchla tabuľka na konci */
+.quick-table {
+    background: linear-gradient(135deg, #fff3e0, #ffeaa7);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px 0;
+    border: 2px solid #ff9800;
 }
 
 /* Sekcia Cvičenia */
@@ -648,5 +917,42 @@ h2 {
     
     #voice-select {
         width: 100%;
+    }
+    
+    .category-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .category-btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px;
+        font-size: 1.05em;
+    }
+    
+    .category-info {
+        margin: 15px;
+        padding: 12px;
+    }
+    
+    .category-selector-container h3 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+    
+    .favorite-star, .flashcard-favorite-star {
+        font-size: 1.1em;
+    }
+    
+    .favorite-star {
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    .flashcard-favorite-star {
+        top: 10px;
+        right: 10px;
+        font-size: 1.3em;
     }
 }
