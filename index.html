@@ -6,6 +6,11 @@
     <title>Français avec Moi</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Firebase SDKs (compat verzia pre script tagy) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -17,8 +22,51 @@
             <button data-target="learn-section" class="nav-button">Učiť sa</button>
             <button data-target="exercises-section" class="nav-button">Cvičenia</button>
             <button data-target="settings-section" class="nav-button"><i class="fas fa-cog"></i></button>
+            
+            <!-- User Account Section -->
+            <div id="user-account">
+                <button id="login-btn" class="nav-button"><i class="fas fa-user"></i> Prihlásiť</button>
+                <div id="user-info" style="display: none;">
+                    <span id="user-email"></span>
+                    <button id="logout-btn" class="nav-button"><i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </div>
         </nav>
     </header>
+
+    <!-- Login/Register Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal">&times;</div>
+            <div id="auth-container">
+                <h2 id="auth-title">Prihlásenie</h2>
+                
+                <form id="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Heslo:</label>
+                        <input type="password" id="password" required>
+                        <small>Minimálne 6 znakov</small>
+                    </div>
+                    
+                    <button type="submit" id="auth-submit-btn">Prihlásiť sa</button>
+                </form>
+                
+                <div id="auth-switch">
+                    <p id="auth-switch-text">Nemáte účet? <a href="#" id="switch-to-register">Registrovať sa</a></p>
+                </div>
+                
+                <div id="auth-message"></div>
+                
+                <div id="auth-loading" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Načítavam...
+                </div>
+            </div>
+        </div>
+    </div>
 
     <main id="app-content">
         <section id="home-section" class="app-section active">

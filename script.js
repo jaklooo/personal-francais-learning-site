@@ -1,3 +1,20 @@
+// Firebase Configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBE-zv3_Ig0wmK2EmSShJutxEcC44drPew",
+  authDomain: "franinina-marek.firebaseapp.com",
+  projectId: "franinina-marek",
+  storageBucket: "franinina-marek.firebasestorage.app",
+  messagingSenderId: "591319972275",
+  appId: "1:591319972275:web:597664cb303f62565cb3c6"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+let currentUser = null;
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- DATABÁZA SLOVÍČOK S KATEGÓRIAMI ---
@@ -473,6 +490,187 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- SYSTÉM OBĽÚBENÝCH SLOVÍČOK ---
     let favoriteWords = new Set();
 
+    // --- FIREBASE SYNCHRONIZÁCIA ---
+    
+    // --- FIREBASE AUTENTIFIKÁCIA ---
+    
+    // Sleduj zmeny autentifikácie
+    auth.onAuthStateChanged((user) => {
+        currentUser = user;
+        updateUserUI();
+        
+        if (user) {
+            console.log('Prihlásený používateľ:', user.email);
+            loadFavoritesFromCloud();
+        } else {
+            console.log('Používateľ nie je prihlásený');
+            // Načítaj z localStorage ako fallback
+            loadFavorites();
+        }
+    });
+
+    // Aktualizuj UI podľa stavu prihlásenia
+    function updateUserUI() {
+        const loginBtn = document.getElementById('login-btn');
+        const userInfo = document.getElementById('user-info');
+        const userEmail = document.getElementById('user-email');
+        
+        if (currentUser) {
+            loginBtn.style.display = 'none';
+            userInfo.style.display = 'flex';
+            userEmail.textContent = currentUser.email;
+        } else {
+            loginBtn.style.display = 'block';
+            userInfo.style.display = 'none';
+        }
+    }
+
+    // Registrácia
+    async function registerUser(email, password) {
+        try {
+            const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+            console.log('Používateľ registrovaný:', userCredential.user.email);
+            
+            // Ak má lokálne obľúbené, prenesi ich do cloudu
+            if (favoriteWords.size > 0) {
+                await saveFavoritesToCloud();
+                showAuthMessage('Účet vytvorený a obľúbené synchronizované!', 'success');
+            } else {
+                showAuthMessage('Účet úspešne vytvorený!', 'success');
+            }
+            
+            closeAuthModal();
+            
+        } catch (error) {
+            console.error('Chyba pri registrácii:', error);
+            showAuthMessage(getErrorMessage(error.code), 'error');
+        }
+    }
+
+    // Prihlásenie
+    async function loginUser(email, password) {
+        try {
+            const userCredential = await auth.signInWithEmailAndPassword(email, password);
+            console.log('Používateľ prihlásený:', userCredential.user.email);
+            showAuthMessage('Úspešne prihlásený!', 'success');
+            closeAuthModal();
+            
+        } catch (error) {
+            console.error('Chyba pri prihlásení:', error);
+            showAuthMessage(getErrorMessage(error.code), 'error');
+        }
+    }
+
+    // Odhlásenie
+    async function logoutUser() {
+        try {
+            await auth.signOut();
+            console.log('Používateľ odhlásený');
+            // Vymaž lokálne obľúbené
+            favoriteWords.clear();
+            updateAllFavoritesAfterLoad();
+        } catch (error) {
+            console.error('Chyba pri odhlásení:', error);
+        }
+    }
+
+    // Zobraz správu v auth modale
+    function showAuthMessage(message, type) {
+        const messageEl = document.getElementById('auth-message');
+        messageEl.textContent = message;
+        messageEl.className = type;
+        messageEl.style.display = 'block';
+    }
+
+    // Preloženie Firebase error kódov
+    function getErrorMessage(errorCode) {
+        switch (errorCode) {
+            case 'auth/email-already-in-use':
+                return 'Tento email už je registrovaný.';
+            case 'auth/weak-password':
+                return 'Heslo musí mať minimálne 6 znakov.';
+            case 'auth/invalid-email':
+                return 'Neplatný email formát.';
+            case 'auth/user-not-found':
+                return 'Používateľ s týmto emailom neexistuje.';
+            case 'auth/wrong-password':
+                return 'Nesprávne heslo.';
+            case 'auth/too-many-requests':
+                return 'Príliš veľa pokusov. Skúste neskôr.';
+            default:
+                return 'Vyskytla sa chyba. Skúste to znovu.';
+        }
+    }
+
+    // Načítaj obľúbené z Firebase
+    async function loadFavoritesFromCloud() {
+        if (!currentUser) {
+            loadFavorites(); // Fallback na localStorage
+            return;
+        }
+        
+        try {
+            const doc = await db.collection('users').doc(currentUser.uid).get();
+            if (doc.exists) {
+                const data = doc.data();
+                if (data.favorites) {
+                    favoriteWords = new Set(data.favorites);
+                    console.log('Načítané obľúbené z cloudu:', data.favorites.length);
+                } else {
+                    // Ak v cloude nič nie je, načítaj z localStorage a synchronizuj
+                    loadFavorites();
+                    if (favoriteWords.size > 0) {
+                        saveFavoritesToCloud();
+                    }
+                }
+            } else {
+                // Prvýkrát - načítaj z localStorage a ulož do cloudu
+                loadFavorites();
+                if (favoriteWords.size > 0) {
+                    saveFavoritesToCloud();
+                }
+            }
+            
+            // Aktualizuj UI po načítaní
+            updateAllFavoritesAfterLoad();
+            
+        } catch (error) {
+            console.error('Chyba pri načítavaní z cloudu:', error);
+            // Fallback na localStorage
+            loadFavorites();
+        }
+    }
+
+    // Ulož obľúbené do Firebase
+    async function saveFavoritesToCloud() {
+        if (!currentUser) {
+            saveFavorites(); // Fallback na localStorage
+            return;
+        }
+        
+        try {
+            await db.collection('users').doc(currentUser.uid).set({
+                favorites: [...favoriteWords],
+                lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
+            
+            console.log('Obľúbené uložené do cloudu');
+            
+        } catch (error) {
+            console.error('Chyba pri ukladaní do cloudu:', error);
+        }
+        
+        // Vždy ulož aj do localStorage ako backup
+        saveFavorites();
+    }
+
+    // Aktualizuj celé UI po načítaní obľúbených
+    function updateAllFavoritesAfterLoad() {
+        favoriteWords.forEach(wordFr => {
+            updateAllFavoritesUI(wordFr);
+        });
+    }
+
     // Načítaj obľúbené slovíčka z localStorage
     function loadFavorites() {
         const saved = localStorage.getItem('favoriteWords');
@@ -493,7 +691,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             favoriteWords.add(wordFr);
         }
-        saveFavorites();
+        
+        // Ulož do Firebase a localStorage
+        saveFavoritesToCloud();
         
         // Aktualizuj UI vo všetkých sekciách
         updateAllFavoritesUI(wordFr);
@@ -543,8 +743,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return favoriteWords.has(wordFr);
     }
 
-    // Načítaj obľúbené pri štarte
-    loadFavorites();
+    // Obľúbené sa načítajú automaticky po Firebase prihlásení
 
 
     // --- SEKCE 1: ZOZNAM SLOVÍČOK S KATEGÓRIAMI ---
@@ -1634,6 +1833,108 @@ document.addEventListener('DOMContentLoaded', () => {
             populateVoiceSelector();
         };
     }
+
+    // --- AUTENTIFIKAČNÉ EVENT LISTENERS ---
+    const authModal = document.getElementById('auth-modal');
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const authForm = document.getElementById('auth-form');
+    const authTitle = document.getElementById('auth-title');
+    const authSubmitBtn = document.getElementById('auth-submit-btn');
+    const authSwitchText = document.getElementById('auth-switch-text');
+    const switchToRegisterBtn = document.getElementById('switch-to-register');
+    const closeModalBtn = authModal.querySelector('.close-modal');
+    
+    let isLoginMode = true;
+
+    // Otvor auth modal
+    loginBtn.addEventListener('click', () => {
+        authModal.style.display = 'block';
+        switchToLoginMode();
+    });
+
+    // Zatvor modal
+    function closeAuthModal() {
+        authModal.style.display = 'none';
+        authForm.reset();
+        document.getElementById('auth-message').style.display = 'none';
+    }
+
+    closeModalBtn.addEventListener('click', closeAuthModal);
+
+    // Zatvor modal kliknutím mimo
+    window.addEventListener('click', (e) => {
+        if (e.target === authModal) {
+            closeAuthModal();
+        }
+    });
+
+    // Prepni medzi prihlásením a registráciou
+    switchToRegisterBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isLoginMode) {
+            switchToRegisterMode();
+        } else {
+            switchToLoginMode();
+        }
+    });
+
+    function switchToLoginMode() {
+        isLoginMode = true;
+        authTitle.textContent = 'Prihlásenie';
+        authSubmitBtn.textContent = 'Prihlásiť sa';
+        authSwitchText.innerHTML = 'Nemáte účet? <a href="#" id="switch-to-register">Registrovať sa</a>';
+        document.getElementById('switch-to-register').addEventListener('click', (e) => {
+            e.preventDefault();
+            switchToRegisterMode();
+        });
+    }
+
+    function switchToRegisterMode() {
+        isLoginMode = false;
+        authTitle.textContent = 'Registrácia';
+        authSubmitBtn.textContent = 'Registrovať sa';
+        authSwitchText.innerHTML = 'Už máte účet? <a href="#" id="switch-to-register">Prihlásiť sa</a>';
+        document.getElementById('switch-to-register').addEventListener('click', (e) => {
+            e.preventDefault();
+            switchToLoginMode();
+        });
+    }
+
+    // Spracuj formulár
+    authForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        
+        if (!email || !password) {
+            showAuthMessage('Vyplňte všetky polia', 'error');
+            return;
+        }
+        
+        // Zobraz loading
+        document.getElementById('auth-loading').style.display = 'block';
+        authSubmitBtn.disabled = true;
+        
+        try {
+            if (isLoginMode) {
+                await loginUser(email, password);
+            } else {
+                await registerUser(email, password);
+            }
+        } finally {
+            document.getElementById('auth-loading').style.display = 'none';
+            authSubmitBtn.disabled = false;
+        }
+    });
+
+    // Odhlásenie
+    logoutBtn.addEventListener('click', () => {
+        if (confirm('Naozaj sa chcete odhlásiť?')) {
+            logoutUser();
+        }
+    });
 
     // --- INICIALIZÁCIA APLIKÁCIE ---
     function initialize() {
