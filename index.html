@@ -21,6 +21,7 @@
             <button data-target="flashcards-section" class="nav-button">Flashcards</button>
             <button data-target="learn-section" class="nav-button">Učiť sa</button>
             <button data-target="exercises-section" class="nav-button">Cvičenia</button>
+            <button data-target="stories-section" class="nav-button">Príbehy</button>
             <button data-target="settings-section" class="nav-button"><i class="fas fa-cog"></i></button>
             
             <!-- User Account Section -->
@@ -152,6 +153,921 @@
                     <p id="feedback-text"></p>
                     <p id="feedback-explanation"></p>
                     <button id="next-exercise-btn">Ďalšia úloha</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stories Section -->
+        <section id="stories-section" class="app-section">
+            <h2><i class="fas fa-book-open"></i> Príbehy</h2>
+            <p class="section-description">Precvičujte si slovnú zásobu prostredníctvom príbehov s kontextom</p>
+            
+            <!-- B1+ Intensif Category -->
+            <div class="story-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-star"></i> B1+ Intensif</h3>
+                    <button class="category-toggle-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="category-content">
+                    <div class="stories-container">
+                        <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-title-section">
+                            <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story1', this)">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <h3>Príbeh 1: Marek a Umelá Inteligencia</h3>
+                        </div>
+                        <button class="story-toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p>Marek était assis le soir à sa table, la seule source de lumière était <strong>la lumière</strong> de son ordinateur portable. Il avait décidé de ne pas <strong>baisser</strong> la luminosité de l'écran, car il ne voulait pas <strong>diminuer</strong> son enthousiasme.</p>
+
+                            <p>Sur la table, il avait une tasse de café et un carnet dans lequel il essayait de <strong>trier les déchets</strong> de ses idées — séparer les utiles des inutiles, comme on trie les données pour un réseau neuronal.</p>
+
+                            <p>À côté du clavier se trouvait <strong>l'emballage</strong> d'une barre chocolatée, qui était heureusement <strong>recyclable</strong>, mais certainement pas <strong>dégradable</strong>, alors Marek se dit qu'il vaudrait mieux acheter <strong>les produits locaux</strong>.</p>
+
+                            <p>Après un moment, il décida de <strong>se déplacer</strong> à la bibliothèque — <strong>un déplacement</strong> court, mais il savait que marcher aidait à garder l'esprit <strong>propre</strong>. En chemin, il remarqua un trottoir <strong>sale</strong>. « Hmm, c'est vraiment <strong>sale</strong> », pensa-t-il. Il commença à <strong>réfléchir</strong> à la façon dont l'IA pourrait aider à maintenir les villes propres, <strong>surtout</strong> dans les grandes métropoles.</p>
+
+                            <p>Au coin de la rue, il fut surpris par un chat <strong>sauvage</strong> qui lui bloquait le passage. « Si tu me donnes <strong>une promesse</strong> de ne pas m'attaquer, je te laisse passer », murmura Marek. Le chat s'éloigna et Marek remarqua <strong>le fossé</strong> profond près de la route où des voitures autonomes testaient leurs algorithmes.</p>
+
+                            <p>Dans le laboratoire, il vit des ingénieurs <strong>mélanger</strong> différents jeux de données. L'un d'eux semblait inquiet — quelqu'un pourrait les <strong>menacer</strong>. « Ce serait une grande <strong>menace</strong> pour tout le projet », expliqua un collègue.</p>
+
+                            <p>Marek ne voulait pas <strong>gâcher</strong> leur travail, alors il resta silencieux. <strong>Tout à coup</strong>, l'alarme sonna — l'expérience avait dépassé certaines limites, mais heureusement seulement virtuellement.</p>
+
+                            <p>« Heureusement, les coûts de cette technologie sont encore <strong>des prix modérés</strong> », sourit le chef de projet. Tout était <strong>intact</strong> et ils pouvaient continuer. « Donc… <strong>soit</strong> on commence, soit on attend ? » demanda le chef. « On commence », répondit Marek.</p>
+
+                            <p>Sur le tableau s'affichait un sujet concernant les systèmes de <strong>péage</strong>, où l'IA optimise les tarifs selon les données <strong>auquel</strong> elle a accès. Marek se demanda combien <strong>d'essence</strong> on pouvait économiser et comment réduire <strong>l'usure</strong> de chaque <strong>véhicule</strong>.</p>
+
+                            <p>Plus tard, la conférence aborda la manière dont l'IA crée <strong>une liaison</strong> entre différents serveurs et construit <strong>un lien</strong> entre la science et la pratique. Les données peuvent se <strong>relier</strong> et former un réseau global.</p>
+
+                            <p>« L'IA, c'est comme voyager – tu finis toujours <strong>quelque part</strong>, mais sans bon plan, tu te retrouves <strong>nulle part</strong> », dit le professeur.</p>
+
+                            <p>Marek nota : les projets d'IA peuvent être <strong>lourd</strong> en ressources, mais s'ils sont bien conçus, ils peuvent être aussi <strong>léger</strong>. Les résultats doivent être <strong>doux</strong> pour les utilisateurs, le design <strong>fin</strong>, mais le modèle pas trop <strong>mince</strong> en données. Parfois, il vaut mieux un jeu de données <strong>épais</strong> et robuste qu'un jeu <strong>maigre</strong>. « Mais attention, parfois un projet <strong>gros</strong> paraît bien sur le papier, mais il est en réalité <strong>grossier</strong> dans son exécution », ajouta Marek.</p>
+
+                            <p>À la fin de la journée, Marek réserva <strong>l'hébergement</strong> dans un petit hôtel, ouvrit la fenêtre et commença à <strong>respirer</strong> profondément. Il entendit quelqu'un dans le couloir en train de <strong>bouffer</strong> une baguette. Il décida de <strong>saisir</strong> ce moment de calme et d'écrire dans son journal :</p>
+
+                            <p>« Aujourd'hui, j'ai vu l'avenir. L'intelligence artificielle peut briller comme <strong>la lumière</strong>, mais il faut savoir <strong>trier les déchets</strong> de ses décisions. »</p>
+                        </div>
+                        <div class="story-vocabulary">
+                            <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                            <div class="vocabulary-grid">
+                                <span class="vocab-item">la lumière</span>
+                                <span class="vocab-item">baisser</span>
+                                <span class="vocab-item">diminuer</span>
+                                <span class="vocab-item">trier les déchets</span>
+                                <span class="vocab-item">l'emballage</span>
+                                <span class="vocab-item">recyclable</span>
+                                <span class="vocab-item">dégradable</span>
+                                <span class="vocab-item">les produits locaux</span>
+                                <span class="vocab-item">se déplacer</span>
+                                <span class="vocab-item">propre / sale</span>
+                                <span class="vocab-item">réfléchir</span>
+                                <span class="vocab-item">surtout</span>
+                                <span class="vocab-item">sauvage</span>
+                                <span class="vocab-item">une promesse</span>
+                                <span class="vocab-item">le fossé</span>
+                                <span class="vocab-item">mélanger</span>
+                                <span class="vocab-item">menacer / menace</span>
+                                <span class="vocab-item">gâcher</span>
+                                <span class="vocab-item">tout à coup</span>
+                                <span class="vocab-item">intact</span>
+                                <span class="vocab-item">soit</span>
+                                <span class="vocab-item">péage</span>
+                                <span class="vocab-item">l'essence</span>
+                                <span class="vocab-item">l'usure</span>
+                                <span class="vocab-item">véhicule</span>
+                                <span class="vocab-item">liaison / lien</span>
+                                <span class="vocab-item">relier</span>
+                                <span class="vocab-item">quelque part / nulle part</span>
+                                <span class="vocab-item">lourd / léger</span>
+                                <span class="vocab-item">doux / fin / mince</span>
+                                <span class="vocab-item">épais / maigre</span>
+                                <span class="vocab-item">gros / grossier</span>
+                                <span class="vocab-item">l'hébergement</span>
+                                <span class="vocab-item">respirer</span>
+                                <span class="vocab-item">bouffer</span>
+                                <span class="vocab-item">saisir</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-title-section">
+                            <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story2', this)">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <h3>Príbeh 2: Julien a Zimné Dobrodružstvo</h3>
+                        </div>
+                        <button class="story-toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p>Un matin glacial, Julien décida de <strong>se diriger</strong> vers la montagne pour une randonnée, <strong>même en plein hiver</strong>. Il mit son <strong>un parka</strong> épais, ferma soigneusement la <strong>une fermeture Éclair</strong> et sortit. L'air était si froid qu'il sentait son visage <strong>geler</strong>.</p>
+
+                            <p>Il avança <strong>soigneusement</strong> sur le sentier enneigé, profitant de chaque <strong>la facette</strong> du paysage. De temps en temps, il commençait à <strong>transpirer</strong> sous ses couches de vêtements, malgré le froid. « C'est étrange, mais je peux <strong>jouir du soleil</strong> et sentir le vent glacial en même temps », pensa-t-il.</p>
+
+                            <p>En chemin, il croisa un groupe de randonneurs, qu'il réussit à <strong>devancer</strong> grâce à son rythme rapide. L'un d'eux, très <strong>branché</strong> avec ses lunettes de ski dernier cri, lui lança un signe de la main.</p>
+
+                            <p>Après deux heures, la neige commença à tomber plus fort. Julien se retrouva complètement <strong>trempé</strong> et réalisa qu'il allait <strong>être mouillé</strong> jusqu'aux os. Pourtant, il ne s'arrêta pas ; il voulait <strong>se livrer</strong> entièrement à cette aventure. Il se promit, ou plutôt il se mit à <strong>jurer</strong> qu'il atteindrait le sommet.</p>
+
+                            <p>Le trajet allait <strong>durer</strong> encore longtemps, mais il était déterminé. Quand il arriva à une petite cabane, il décida de faire une pause pour récupérer un peu de <strong>le sommeil</strong> perdu la nuit précédente. Par la fenêtre, il vit une file de randonneurs <strong>défiler</strong> lentement sur le chemin.</p>
+
+                            <p>Il prit son téléphone et consulta sa <strong>la messagerie</strong>, où il trouva un message d'un ami : « N'oublie pas de <strong>épargner</strong> un peu d'énergie pour la descente ! » Julien sourit et continua.</p>
+
+                            <p>En atteignant le sommet, il se permit de <strong>percevoir</strong> la beauté infinie des montagnes. Devant lui, des panoramas à couper le souffle, des neiges éternelles qui avaient résisté pendant plus d'<strong>un siècle</strong>… et <strong>ainsi de suite</strong>, jusqu'à l'horizon.</p>
+
+                            <p>Là-haut, il pensa : « J'ai vraiment <strong>réussi ses vacances</strong>. » Il n'avait aucune <strong>l'intention</strong> de redescendre tout de suite ; il voulait rester encore un moment, profiter de cet instant unique, <strong>discrètement</strong>, comme si la montagne n'appartenait qu'à lui.</p>
+
+                            <p>« <strong>Bien entendu</strong>, la vie est faite pour ces moments-là », se dit-il, et il se mit à contempler le paysage jusqu'à ce que le soleil disparaisse derrière les sommets.</p>
+                        </div>
+                        <div class="story-vocabulary">
+                            <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                            <div class="vocabulary-grid">
+                                <span class="vocab-item">se diriger</span>
+                                <span class="vocab-item">même en plein hiver</span>
+                                <span class="vocab-item">un parka</span>
+                                <span class="vocab-item">une fermeture Éclair</span>
+                                <span class="vocab-item">geler</span>
+                                <span class="vocab-item">soigneusement</span>
+                                <span class="vocab-item">la facette</span>
+                                <span class="vocab-item">transpirer</span>
+                                <span class="vocab-item">jouir du soleil</span>
+                                <span class="vocab-item">devancer</span>
+                                <span class="vocab-item">branché</span>
+                                <span class="vocab-item">trempé</span>
+                                <span class="vocab-item">être mouillé</span>
+                                <span class="vocab-item">se livrer</span>
+                                <span class="vocab-item">jurer</span>
+                                <span class="vocab-item">durer</span>
+                                <span class="vocab-item">le sommeil</span>
+                                <span class="vocab-item">défiler</span>
+                                <span class="vocab-item">la messagerie</span>
+                                <span class="vocab-item">épargner</span>
+                                <span class="vocab-item">percevoir</span>
+                                <span class="vocab-item">un siècle</span>
+                                <span class="vocab-item">ainsi de suite</span>
+                                <span class="vocab-item">réussi ses vacances</span>
+                                <span class="vocab-item">l'intention</span>
+                                <span class="vocab-item">discrètement</span>
+                                <span class="vocab-item">bien entendu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-title-section">
+                            <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story3', this)">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <h3>Príbeh 3: Camille a Letné Dobrodružstvo</h3>
+                        </div>
+                        <button class="story-toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p>Camille, <strong>une femme d'affaires</strong> passionnée par <strong>les sports de glisse</strong>, décida un été de quitter la ville pour <strong>se balader</strong> sur la côte. Elle avait <strong>un avis</strong> très positif sur le voyage, car elle voulait <strong>se faire plein de copains</strong> et <strong>partager</strong> de nouvelles expériences.</p>
+
+                            <p>Son programme était simple : essayer <strong>le char à voile</strong>, pratiquer <strong>la planche à voile</strong> et profiter de <strong>la glisse</strong> autant que possible. Elle aimait <strong>bouger</strong> et sentir <strong>le son</strong> des vagues qui l'<strong>entourer</strong>.</p>
+
+                            <p>Le matin, elle se promena près de <strong>la ferme</strong> d'un ami avant de se rendre au <strong>le port de pêche</strong> où flottait <strong>un drapeau</strong> rouge signalant une régate. Elle prit un carnet pour <strong>cocher</strong> les activités déjà réalisées.</p>
+
+                            <p>L'après-midi, elle partit en <strong>la randonnée</strong> jusqu'à <strong>la forêt enchantée</strong>, puis monta sur un bateau au <strong>le port de plaisance</strong> pour rejoindre <strong>un îlot</strong> isolé. Là, un guide local cherchait à <strong>sensibiliser</strong> les visiteurs à la protection des <strong>les terres</strong> environnantes et des <strong>les remparts</strong> historiques du village voisin.</p>
+
+                            <p>Elle adorait <strong>flâner</strong> dans les ruelles, et un soir, elle assista à <strong>l'embarquement</strong> d'un groupe de cavaliers qui, déjà <strong>en selle</strong>, partaient vers <strong>le cadre</strong> majestueux de la plage au coucher du soleil.</p>
+
+                            <p>Vêtue d'<strong>un tee-shirt</strong> blanc, elle alla <strong>éteindre</strong> son téléphone pour vivre pleinement l'instant. Le ciel lui <strong>paraître</strong> infini, et les rires des enfants la faisaient <strong>distraire</strong> de tout le reste. Elle comprit que ces moments pouvaient <strong>détruire</strong> le stress accumulé et guérir ceux qui savaient qu'ils pouvaient <strong>souffrir</strong> de la routine.</p>
+
+                            <p>Un soir, elle entendit un client <strong>se plaindre</strong> du bruit au restaurant. Pour changer d'ambiance, elle alla <strong>peindre</strong> un paysage marin avec un groupe d'artistes.</p>
+
+                            <p>Chaque jour, elle parvenait à <strong>décrire</strong> les émotions ressenties dans son journal et à les <strong>partager</strong> avec ses amis. Un matin, après <strong>un coup</strong> de café bien serré, elle rencontra un entraîneur préparant son équipe pour <strong>la coupe du monde</strong> de voile.</p>
+
+                            <p>À la fin du séjour, excepté <strong>excepté</strong> deux jours de pluie, elle avait réussi à <strong>visionner</strong> un court-métrage sur la région, noter ses impressions dans <strong>la colonne</strong> « souvenirs » de son carnet, et admirer les photos <strong>ci-dessous</strong> sur le panneau du club nautique.</p>
+
+                            <p>Elle repartit le cœur léger, prête à <strong>se mettre au soleil</strong> dès que possible, et déjà en train de rêver <strong>vers</strong> sa prochaine aventure.</p>
+                        </div>
+                        <div class="story-vocabulary">
+                            <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                            <div class="vocabulary-grid">
+                                <span class="vocab-item">une femme d'affaires</span>
+                                <span class="vocab-item">les sports de glisse</span>
+                                <span class="vocab-item">se balader</span>
+                                <span class="vocab-item">un avis</span>
+                                <span class="vocab-item">se faire plein de copains</span>
+                                <span class="vocab-item">partager</span>
+                                <span class="vocab-item">le char à voile</span>
+                                <span class="vocab-item">la planche à voile</span>
+                                <span class="vocab-item">la glisse</span>
+                                <span class="vocab-item">bouger</span>
+                                <span class="vocab-item">le son</span>
+                                <span class="vocab-item">entourer</span>
+                                <span class="vocab-item">la ferme</span>
+                                <span class="vocab-item">le port de pêche</span>
+                                <span class="vocab-item">un drapeau</span>
+                                <span class="vocab-item">cocher</span>
+                                <span class="vocab-item">la randonnée</span>
+                                <span class="vocab-item">la forêt enchantée</span>
+                                <span class="vocab-item">le port de plaisance</span>
+                                <span class="vocab-item">un îlot</span>
+                                <span class="vocab-item">sensibiliser</span>
+                                <span class="vocab-item">les terres</span>
+                                <span class="vocab-item">les remparts</span>
+                                <span class="vocab-item">flâner</span>
+                                <span class="vocab-item">l'embarquement</span>
+                                <span class="vocab-item">en selle</span>
+                                <span class="vocab-item">le cadre</span>
+                                <span class="vocab-item">un tee-shirt</span>
+                                <span class="vocab-item">éteindre</span>
+                                <span class="vocab-item">paraître</span>
+                                <span class="vocab-item">distraire</span>
+                                <span class="vocab-item">détruire</span>
+                                <span class="vocab-item">souffrir</span>
+                                <span class="vocab-item">se plaindre</span>
+                                <span class="vocab-item">peindre</span>
+                                <span class="vocab-item">décrire</span>
+                                <span class="vocab-item">un coup</span>
+                                <span class="vocab-item">la coupe du monde</span>
+                                <span class="vocab-item">excepté</span>
+                                <span class="vocab-item">visionner</span>
+                                <span class="vocab-item">la colonne</span>
+                                <span class="vocab-item">ci-dessous</span>
+                                <span class="vocab-item">se mettre au soleil</span>
+                                <span class="vocab-item">vers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 4 -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-title-section">
+                            <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story4', this)">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <h3>Príbeh 4: Marc a Večer vo Meste</h3>
+                        </div>
+                        <button class="story-toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p>Ce soir-là, <strong>il était assez tard</strong> lorsque la ville célébra <strong>la victoire</strong> de son équipe de football. La place principale était remplie d'<strong>une foule</strong> immense, prête à <strong>être en folie</strong>. Les supporters chantaient, riaient, certains se mettaient à <strong>pleurer</strong> de <strong>le bonheur</strong>. On voyait des couples qui n'hésitaient pas à <strong>s'embrasser</strong> en plein milieu de la rue.</p>
+
+                            <p>Par curiosité, Marc décida de <strong>retourner</strong> chez lui par les petites ruelles, loin du bruit. Mais <strong>soudain</strong>, il entendit quelqu'un <strong>pousser un cri</strong> derrière lui. Il se retourna et aperçut un homme assis dans <strong>un fauteuil</strong> au milieu du trottoir, en train de <strong>frapper</strong> contre la porte d'un bar fermé. Avant qu'il puisse réagir, l'homme se mit à <strong>s'enfuir</strong>.</p>
+
+                            <p>Plus tard, il apprit qu'un <strong>un interrogatoire</strong> avait <strong>avoir lieu</strong> à la police. Un <strong>un témoin</strong> affirma avoir vu la scène.</p>
+
+                            <p>Le lendemain matin, Marc traversait la rue, mais un <strong>un piéton</strong> imprudent lui <strong>gêner</strong> le passage. Il dut <strong>freiner</strong> brusquement, et sa voiture alla <strong>heurter</strong> légèrement <strong>le trottoir</strong>. Heureusement, rien de grave.</p>
+
+                            <p>À la maison, il décida de se détendre en préparant <strong>la pâte</strong> pour un gâteau. Mais il marcha sur <strong>une peau de banane</strong> qui traînait près du frigo et faillit tomber, renversant en plus <strong>une canette</strong> de soda.</p>
+
+                            <p>En allumant la télévision, il tomba sur un reportage sur <strong>le parcours d'un emballage</strong>. Le film montrait comment, après la collecte, les déchets arrivaient à <strong>l'usine de recyclage</strong>, où <strong>le métal est fondu</strong>. On voyait ensuite des machines <strong>broyer</strong> les pièces, puis les <strong>ramollir</strong> avant de créer de nouveaux objets. Un <strong>le schéma</strong> animé expliquait tout le processus.</p>
+
+                            <p>Le reportage était si intéressant qu'il donna envie à Marc de <strong>démarrer</strong> un blog sur l'écologie. Il chercha dans <strong>un annuaire</strong> des associations locales et glissa un <strong>un prospectus</strong> dans <strong>une poche</strong> de sa veste pour y penser plus tard.</p>
+
+                            <p>En fin de soirée, il lut un article <strong>émouvant</strong> sur un vieil ouvrier qui avait travaillé toute sa vie dans une usine de recyclage. L'<strong>l'interviewé</strong> racontait ses souvenirs avec une grande émotion.</p>
+
+                            <p>Et Marc se dit que, parfois, les histoires simples peuvent changer notre regard sur le monde — un peu comme un geste anodin qui évite de <strong>brûler</strong> une chance d'améliorer notre avenir.</p>
+                        </div>
+                        <div class="story-vocabulary">
+                            <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                            <div class="vocabulary-grid">
+                                <span class="vocab-item">il était assez tard</span>
+                                <span class="vocab-item">la victoire</span>
+                                <span class="vocab-item">une foule</span>
+                                <span class="vocab-item">être en folie</span>
+                                <span class="vocab-item">pleurer</span>
+                                <span class="vocab-item">le bonheur</span>
+                                <span class="vocab-item">s'embrasser</span>
+                                <span class="vocab-item">retourner</span>
+                                <span class="vocab-item">soudain</span>
+                                <span class="vocab-item">pousser un cri</span>
+                                <span class="vocab-item">un fauteuil</span>
+                                <span class="vocab-item">frapper</span>
+                                <span class="vocab-item">s'enfuir</span>
+                                <span class="vocab-item">un interrogatoire</span>
+                                <span class="vocab-item">avoir lieu</span>
+                                <span class="vocab-item">un témoin</span>
+                                <span class="vocab-item">un piéton</span>
+                                <span class="vocab-item">gêner</span>
+                                <span class="vocab-item">freiner</span>
+                                <span class="vocab-item">heurter</span>
+                                <span class="vocab-item">le trottoir</span>
+                                <span class="vocab-item">la pâte</span>
+                                <span class="vocab-item">une peau de banane</span>
+                                <span class="vocab-item">une canette</span>
+                                <span class="vocab-item">le parcours d'un emballage</span>
+                                <span class="vocab-item">l'usine de recyclage</span>
+                                <span class="vocab-item">le métal est fondu</span>
+                                <span class="vocab-item">broyer</span>
+                                <span class="vocab-item">ramollir</span>
+                                <span class="vocab-item">le schéma</span>
+                                <span class="vocab-item">démarrer</span>
+                                <span class="vocab-item">un annuaire</span>
+                                <span class="vocab-item">un prospectus</span>
+                                <span class="vocab-item">une poche</span>
+                                <span class="vocab-item">émouvant</span>
+                                <span class="vocab-item">l'interviewé</span>
+                                <span class="vocab-item">brûler</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 5 -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-title-section">
+                            <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story5', this)">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <h3>Príbeh 5: Dobrovoľníci v Lyone</h3>
+                        </div>
+                        <button class="story-toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p>Dans <strong>la banlieue</strong> de Lyon, un groupe de <strong>les bénévoles</strong> s'était donné rendez-vous pour <strong>ramasser</strong> <strong>le moindre</strong> <strong>le mégot</strong> et autre déchet abandonné par <strong>une incivilité</strong> banale. Certains disaient que ces gens <strong>mériter</strong>aient une médaille, mais ils répondaient simplement : « Nous faisons cela pour <strong>la propreté</strong>, pas pour la gloire. »</p>
+
+                            <p>Chacun portait <strong>une chasuble</strong> fluorescente et tenait <strong>une pince</strong> pour <strong>traquer</strong> les déchets cachés dans l'herbe. Parmi eux, un <strong>un expatrié</strong> italien avait décidé de <strong>s'investir</strong> dans ce projet après avoir vu <strong>la saleté</strong> qui couvrait le quartier.</p>
+
+                            <p>Ils commencèrent par <strong>rassembler</strong> tout le monde devant <strong>l'antenne</strong> locale de l'association. Le président expliqua que le but n'était pas seulement de nettoyer, mais aussi de sensibiliser au <strong>réel</strong> problème. « Nous voulons <strong>confier</strong> à chacun la mission d'agir, même <strong>à titre individuel</strong>. Car <strong>autant</strong> de déchets jetés par négligence, c'est trop », ajouta-t-il.</p>
+
+                            <p>Parmi les objets retrouvés, il y avait de vieux <strong>les meubles</strong>, des papiers <strong>gras</strong>, et même une vieille télévision. L'odeur provoquait parfois <strong>la gêne</strong> et un sentiment de <strong>la honte</strong> collective. « Ces déchets ne disparaissent pas <strong>un claquement de doigts</strong> », souligna le président.</p>
+
+                            <p>À la pause, plusieurs nouveaux venus décidèrent de <strong>rejoindre</strong> l'association de manière régulière. Ils savaient que <strong>désormais</strong>, il faudrait aussi <strong>souligner</strong> les bons comportements pour <strong>attirer</strong> plus de volontaires.</p>
+
+                            <p>Le groupe était très varié : un <strong>un trentenaire</strong> passionné d'écologie, un <strong>un quadragénaire</strong> ancien militaire, un <strong>un quinquagénaire</strong> professeur d'histoire, un <strong>un sexagénaire</strong> retraité, un <strong>un septuagénaire</strong> dynamique, un <strong>un octogénaire</strong> encore très actif, un <strong>un nonagénaire</strong> admiré de tous, et même <strong>un centenaire</strong> venu encourager les jeunes.</p>
+
+                            <p>Après trois jours <strong>consécutif</strong> de nettoyage, ils avaient rempli des dizaines de sacs. Un journaliste local vint leur poser des questions <strong>d'après vous</strong> habituelles : « Pourquoi faites-vous cela ? » La réponse fut claire : « Pour <strong>garder</strong> <strong>l'espace</strong> commun propre et montrer l'exemple. »</p>
+
+                            <p>En fin de journée, ils trièrent les déchets : <strong>le sachet</strong> en plastique, <strong>le pot</strong> de yaourt, <strong>le bocal</strong> vide, <strong>la brique</strong> de lait, <strong>le flacon de parfum</strong> cassé, <strong>la boîte de conserve</strong> rouillée, et même <strong>la capsule de café</strong>.</p>
+
+                            <p>Un élu de la mairie expliqua qu'il faudrait appliquer <strong>les règles</strong> plus strictes et sanctionner le mauvais <strong>le comportement</strong> par <strong>une amende</strong> ou <strong>une taxe</strong>. « Certains paieraient même <strong>un impôt</strong> plus élevé pour financer le nettoyage », ajouta-t-il.</p>
+
+                            <p>À la fin, les bénévoles rentrèrent fatigués mais heureux. Ils savaient qu'ils avaient changé quelque chose, même si ce n'était qu'une petite <strong>une piste</strong> vers un avenir plus propre.</p>
+
+                            <p>Et tous convinrent que si on ne veut pas <strong>infliger</strong> <strong>la honte</strong> de vivre dans un quartier sale aux générations futures, il faut agir maintenant… et ne pas jeter bêtement ses déchets.</p>
+                        </div>
+                        <div class="story-vocabulary">
+                            <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                            <div class="vocabulary-grid">
+                                <span class="vocab-item">la banlieue</span>
+                                <span class="vocab-item">les bénévoles</span>
+                                <span class="vocab-item">ramasser</span>
+                                <span class="vocab-item">le moindre</span>
+                                <span class="vocab-item">le mégot</span>
+                                <span class="vocab-item">une incivilité</span>
+                                <span class="vocab-item">mériter</span>
+                                <span class="vocab-item">la propreté</span>
+                                <span class="vocab-item">une chasuble</span>
+                                <span class="vocab-item">une pince</span>
+                                <span class="vocab-item">traquer</span>
+                                <span class="vocab-item">un expatrié</span>
+                                <span class="vocab-item">s'investir</span>
+                                <span class="vocab-item">la saleté</span>
+                                <span class="vocab-item">rassembler</span>
+                                <span class="vocab-item">l'antenne</span>
+                                <span class="vocab-item">réel</span>
+                                <span class="vocab-item">confier</span>
+                                <span class="vocab-item">à titre individuel</span>
+                                <span class="vocab-item">autant</span>
+                                <span class="vocab-item">les meubles</span>
+                                <span class="vocab-item">gras</span>
+                                <span class="vocab-item">la gêne</span>
+                                <span class="vocab-item">la honte</span>
+                                <span class="vocab-item">un claquement de doigts</span>
+                                <span class="vocab-item">rejoindre</span>
+                                <span class="vocab-item">désormais</span>
+                                <span class="vocab-item">souligner</span>
+                                <span class="vocab-item">attirer</span>
+                                <span class="vocab-item">un trentenaire</span>
+                                <span class="vocab-item">un quadragénaire</span>
+                                <span class="vocab-item">un quinquagénaire</span>
+                                <span class="vocab-item">un sexagénaire</span>
+                                <span class="vocab-item">un septuagénaire</span>
+                                <span class="vocab-item">un octogénaire</span>
+                                <span class="vocab-item">un nonagénaire</span>
+                                <span class="vocab-item">un centenaire</span>
+                                <span class="vocab-item">consécutif</span>
+                                <span class="vocab-item">d'après vous</span>
+                                <span class="vocab-item">garder</span>
+                                <span class="vocab-item">l'espace</span>
+                                <span class="vocab-item">le sachet</span>
+                                <span class="vocab-item">le pot</span>
+                                <span class="vocab-item">le bocal</span>
+                                <span class="vocab-item">la brique</span>
+                                <span class="vocab-item">le flacon de parfum</span>
+                                <span class="vocab-item">la boîte de conserve</span>
+                                <span class="vocab-item">la capsule de café</span>
+                                <span class="vocab-item">les règles</span>
+                                <span class="vocab-item">le comportement</span>
+                                <span class="vocab-item">une amende</span>
+                                <span class="vocab-item">une taxe</span>
+                                <span class="vocab-item">un impôt</span>
+                                <span class="vocab-item">une piste</span>
+                                <span class="vocab-item">infliger</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 6 -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-title-section">
+                            <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story6', this)">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <h3>Príbeh 6: Fête au bord de mer</h3>
+                        </div>
+                        <button class="story-toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p>Dans un petit village <strong>peuplé</strong> au bord de la mer, se préparait une grande fête. Pierre, un jeune artiste, portait <strong>le paquet</strong> de décorations qu'il devait installer sur la place. Il avait promis de <strong>mener</strong> l'équipe et de <strong>guider</strong> les enfants qui voulaient aider.</p>
+
+                            <p>Un vieil ami vint l'<strong>amener</strong> à la scène principale, tandis qu'un autre proposa de le <strong>conduire</strong> dans sa vieille camionnette pour gagner du temps. Ils arrivèrent devant une vieille maison où des guirlandes commençaient à <strong>pendre</strong> et à <strong>être suspendu</strong> aux fenêtres.</p>
+
+                            <p>La fête, d'un côté, célébrait la mer et ses trésors ; <strong>d'un autre côté</strong>, elle rappelait l'importance de protéger l'environnement. Les discours furent inspirants ; <strong>cependant</strong>, Pierre savait qu'il fallait surtout agir.</p>
+
+                            <p>L'objectif était d'<strong>atteindre</strong> la plage au coucher du soleil. Les plus sportifs espéraient <strong>parvenir à</strong> ramasser tout le plastique trouvé et montrer qu'il fallait <strong>croire en</strong> la force collective.</p>
+
+                            <p>Sur la côte, une grande <strong>vague</strong> éclatait contre les rochers. Des stands proposaient des spécialités locales : la célèbre <strong>la bouillabaisse</strong> et même des <strong>une huître</strong> fraîches.</p>
+
+                            <p>Dans un coin, un groupe d'enfants vivait une aventure inspirée des légendes : <strong>la quête</strong> d'<strong>la fée</strong> qui aiderait <strong>un chevalier</strong> à sauver le village. Ils devaient <strong>plonger</strong> dans une histoire magique, trouver <strong>une cabane</strong> cachée et vaincre l'<strong>l'épuisement</strong> de leur long voyage.</p>
+
+                            <p>Un film projeté sur grand écran était commenté par <strong>une voix off</strong>, tandis que des bateaux commençaient à <strong>filer</strong> au loin, créant une <strong>une ambiance</strong> joyeuse. On pouvait manger des fruits de mer <strong>à gogo</strong> et même s'inscrire à une sortie de <strong>le ski de fond</strong> prévue pour l'hiver.</p>
+
+                            <p>Au stand environnement, on parlait de <strong>le gaspillage</strong> alimentaire et de comment <strong>augmenter</strong> la conscience écologique, <strong>économiser</strong> l'eau et l'énergie, et moins <strong>dépenser</strong> pour éviter de <strong>gaspiller</strong>.</p>
+
+                            <p>Quand la nuit tomba, on dut <strong>allumer</strong> les lanternes. Mais sur le quai, quelqu'un se mit à <strong>glisser</strong> sur une planche mouillée et dut <strong>se dépêcher</strong> de se relever pour éviter de <strong>se mettre en colère</strong> contre les enfants qui jouaient. « Fais attention, <strong>sinon</strong> tu risques de <strong>rater</strong> le spectacle ! » lança un passant.</p>
+
+                            <p>Au programme, il y avait aussi un concours de <strong>un dessin</strong> pour les enfants. Les organisateurs durent <strong>supprimer</strong> quelques inscriptions car il n'y avait plus de places. Certains commencèrent à <strong>s'ennuyer</strong> dans la file d'attente.</p>
+
+                            <p>À la fin, une annonce indiqua que ceux qui voulaient <strong>postuler</strong> comme bénévoles pour l'année suivante devaient se présenter au stand, et que tous les prix étaient encore <strong>disponible</strong>.</p>
+
+                            <p>En montant sur scène, <strong>le commandant de bord</strong> du bateau de pêche remercia les habitants et annonça une bonne nouvelle : la météo prévoyait <strong>une éclaircie</strong> pour le lendemain. Un rayon de soleil allait <strong>apparaître</strong> juste à temps pour la parade finale.</p>
+                        </div>
+                        <div class="story-vocabulary">
+                            <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                            <div class="vocabulary-grid">
+                                <span class="vocab-item">peuplé</span>
+                                <span class="vocab-item">le paquet</span>
+                                <span class="vocab-item">mener</span>
+                                <span class="vocab-item">guider</span>
+                                <span class="vocab-item">amener</span>
+                                <span class="vocab-item">conduire</span>
+                                <span class="vocab-item">pendre</span>
+                                <span class="vocab-item">être suspendu</span>
+                                <span class="vocab-item">d'un autre côté</span>
+                                <span class="vocab-item">cependant</span>
+                                <span class="vocab-item">atteindre</span>
+                                <span class="vocab-item">parvenir à</span>
+                                <span class="vocab-item">croire en</span>
+                                <span class="vocab-item">vague</span>
+                                <span class="vocab-item">la bouillabaisse</span>
+                                <span class="vocab-item">une huître</span>
+                                <span class="vocab-item">la quête</span>
+                                <span class="vocab-item">la fée</span>
+                                <span class="vocab-item">un chevalier</span>
+                                <span class="vocab-item">plonger</span>
+                                <span class="vocab-item">une cabane</span>
+                                <span class="vocab-item">l'épuisement</span>
+                                <span class="vocab-item">une voix off</span>
+                                <span class="vocab-item">filer</span>
+                                <span class="vocab-item">une ambiance</span>
+                                <span class="vocab-item">à gogo</span>
+                                <span class="vocab-item">le ski de fond</span>
+                                <span class="vocab-item">le gaspillage</span>
+                                <span class="vocab-item">augmenter</span>
+                                <span class="vocab-item">économiser</span>
+                                <span class="vocab-item">dépenser</span>
+                                <span class="vocab-item">gaspiller</span>
+                                <span class="vocab-item">allumer</span>
+                                <span class="vocab-item">glisser</span>
+                                <span class="vocab-item">se dépêcher</span>
+                                <span class="vocab-item">se mettre en colère</span>
+                                <span class="vocab-item">sinon</span>
+                                <span class="vocab-item">rater</span>
+                                <span class="vocab-item">un dessin</span>
+                                <span class="vocab-item">supprimer</span>
+                                <span class="vocab-item">s'ennuyer</span>
+                                <span class="vocab-item">postuler</span>
+                                <span class="vocab-item">disponible</span>
+                                <span class="vocab-item">le commandant de bord</span>
+                                <span class="vocab-item">une éclaircie</span>
+                                <span class="vocab-item">apparaître</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 7 -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-title-section">
+                            <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story7', this)">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <h3>Príbeh 7: Vacances au lac</h3>
+                        </div>
+                        <button class="story-toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p>L'été dernier, Marc décida de <strong>camper</strong> au bord d'un lac. Avant de partir, il prit le temps de <strong>s'organiser</strong> : il acheta une tente <strong>d'occasion</strong> dans <strong>la friperie</strong> du village, fit <strong>le ménage</strong> dans sa voiture et prépara tout le nécessaire pour <strong>loger</strong> confortablement pendant plusieurs jours.</p>
+
+                            <p>Sur place, il rencontra Julie, qui lui annonça qu'elle était <strong>être enceinte</strong>. Elle riait en lui disant que son mari était parfois <strong>un menteur</strong>, surtout quand il perdait aux cartes et se comportait comme <strong>un tricheur</strong>. Marc plaisanta en disant : « Alors, c'est peut-être aussi <strong>un escroc</strong>, <strong>un imposteur</strong> ou même <strong>un mytho</strong> ? » Ils éclatèrent de rire.</p>
+
+                            <p>Un soir, autour du feu, Julie raconta <strong>le déchirement</strong> qu'elle avait ressenti en quittant son pays natal. Elle montra à Marc comment elle s'était <strong>se piquer</strong> en cousant une couverture, avant de <strong>s'endormir</strong> doucement près des braises.</p>
+
+                            <p>Le lendemain matin, un garde du parc demanda à voir <strong>le laisser-passer</strong> de Marc. Heureusement, son <strong>un séjour</strong> avait été bien déclaré et il put continuer. Pendant une balade, il réussit à <strong>attraper</strong> un papillon rare et à le relâcher sans lui faire de mal.</p>
+
+                            <p>Au marché local, un vieil homme lui <strong>révéler</strong> que les <strong>les racines</strong> de la région étaient profondément liées à <strong>l'appartenance</strong> cadienne et créole — <strong>cadien et créole</strong> — et que les habitants protégeaient fièrement leur culture.</p>
+
+                            <p>Marc écouta <strong>patiemment</strong>, puis acheta <strong>un morceau</strong> de fromage artisanal qu'il devait <strong>coller</strong> sur son plateau de pique-nique. Avant de partir, il prit le temps de <strong>valider</strong> son inscription à la fête du village et de <strong>rendre hommage</strong> à un musicien local décédé.</p>
+
+                            <p>Mais la fête fut marquée par <strong>une expulsion</strong> d'un visiteur ivre, ce qui causa un léger <strong>le dérangement</strong>. Pourtant, les festivités continuèrent, et le maire promit que, <strong>tant que</strong> la <strong>la communauté</strong> resterait unie, <strong>l'espoir</strong> ne disparaîtrait pas.</p>
+
+                            <p>Le lendemain, ce fut <strong>le départ</strong> pour Marc. Le trajet de retour fut un peu <strong>stressant</strong>, mais il s'arrêta dans <strong>le coin</strong> d'une petite ville pour acheter <strong>une basket</strong> neuve. En chemin, il vit un concours de <strong>le lancer du poids</strong> où les participants portaient <strong>une combinaison de ski</strong> pour une raison mystérieuse.</p>
+
+                            <p>Sur la plage voisine, des enfants jouaient au foot — le gardien arrêtait chaque tir pour protéger <strong>le but</strong>. Plus loin, des jeunes nageaient en <strong>un maillot de bain</strong> sous <strong>un filet</strong> tendu entre deux poteaux.</p>
+
+                            <p>Marc rentra chez lui avec de beaux souvenirs et un sourire, convaincu qu'il reviendrait l'année prochaine.</p>
+                        </div>
+                        <div class="story-vocabulary">
+                            <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                            <div class="vocabulary-grid">
+                                <span class="vocab-item">camper</span>
+                                <span class="vocab-item">s'organiser</span>
+                                <span class="vocab-item">d'occasion</span>
+                                <span class="vocab-item">la friperie</span>
+                                <span class="vocab-item">le ménage</span>
+                                <span class="vocab-item">loger</span>
+                                <span class="vocab-item">être enceinte</span>
+                                <span class="vocab-item">un menteur</span>
+                                <span class="vocab-item">un tricheur</span>
+                                <span class="vocab-item">un escroc</span>
+                                <span class="vocab-item">un imposteur</span>
+                                <span class="vocab-item">un mytho</span>
+                                <span class="vocab-item">le déchirement</span>
+                                <span class="vocab-item">se piquer</span>
+                                <span class="vocab-item">s'endormir</span>
+                                <span class="vocab-item">le laisser-passer</span>
+                                <span class="vocab-item">un séjour</span>
+                                <span class="vocab-item">attraper</span>
+                                <span class="vocab-item">révéler</span>
+                                <span class="vocab-item">les racines</span>
+                                <span class="vocab-item">l'appartenance</span>
+                                <span class="vocab-item">cadien et créole</span>
+                                <span class="vocab-item">patiemment</span>
+                                <span class="vocab-item">un morceau</span>
+                                <span class="vocab-item">coller</span>
+                                <span class="vocab-item">valider</span>
+                                <span class="vocab-item">rendre hommage</span>
+                                <span class="vocab-item">une expulsion</span>
+                                <span class="vocab-item">le dérangement</span>
+                                <span class="vocab-item">tant que</span>
+                                <span class="vocab-item">la communauté</span>
+                                <span class="vocab-item">l'espoir</span>
+                                <span class="vocab-item">le départ</span>
+                                <span class="vocab-item">stressant</span>
+                                <span class="vocab-item">le coin</span>
+                                <span class="vocab-item">une basket</span>
+                                <span class="vocab-item">le lancer du poids</span>
+                                <span class="vocab-item">une combinaison de ski</span>
+                                <span class="vocab-item">le but</span>
+                                <span class="vocab-item">un maillot de bain</span>
+                                <span class="vocab-item">un filet</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 8 -->
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-title-section">
+                            <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story8', this)">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <h3>Príbeh 8: Compétition sportive</h3>
+                        </div>
+                        <button class="story-toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p>Lors d'une compétition sportive au stade municipal, Julien tenait <strong>un bâton</strong> dans la main pour commencer l'épreuve du relais. À côté, un autre groupe préparait <strong>le saut en hauteur</strong> sur <strong>un terrain de football</strong> spécialement aménagé.</p>
+
+                            <p>Pendant l'échauffement, un entraîneur montrait comment manier <strong>une balle</strong> de tennis pour les exercices de précision, tandis que sur l'autre terrain, les enfants jouaient avec <strong>un ballon</strong> coloré. Plus loin, un jeu de pétanque se préparait avec <strong>une boule</strong> en métal brillante.</p>
+
+                            <p>Les arbitres mesuraient <strong>la longueur</strong> et <strong>la largeur</strong> de la piste pour vérifier que tout respectait les règles officielles. Sur la place centrale, des enfants commençaient à <strong>patiner</strong> sur <strong>la patinoire</strong> temporaire, profitant de l'atmosphère joyeuse du festival de <strong>le patinage</strong>.</p>
+
+                            <p>Dans une autre zone, les organisateurs expliquaient comment <strong>lancer</strong> correctement un disque. Un athlète, très concentré, observait son principal <strong>un concurrent</strong> avant de participer à <strong>une épreuve</strong> décisive.</p>
+
+                            <p>Julien commença à <strong>se rendre compte</strong> qu'il n'était pas seulement là pour le sport : il avait aussi <strong>un entretien</strong> prévu avec un journaliste local, <strong>afin de</strong> promouvoir un projet sur <strong>la beauté</strong> du sport et ses valeurs éducatives.</p>
+
+                            <p><strong>Bien que</strong> nerveux, il parla avec passion de <strong>la jeunesse</strong> et de l'importance de l'inspirer à rester active et motivée. Il conclut en disant que, dans la vie comme sur le terrain, le plus important est de participer et de profiter de chaque instant.</p>
+                        </div>
+                        <div class="story-vocabulary">
+                            <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                            <div class="vocabulary-grid">
+                                <span class="vocab-item">un bâton</span>
+                                <span class="vocab-item">le saut en hauteur</span>
+                                <span class="vocab-item">un terrain de football</span>
+                                <span class="vocab-item">une balle</span>
+                                <span class="vocab-item">un ballon</span>
+                                <span class="vocab-item">une boule</span>
+                                <span class="vocab-item">la longueur</span>
+                                <span class="vocab-item">la largeur</span>
+                                <span class="vocab-item">patiner</span>
+                                <span class="vocab-item">la patinoire</span>
+                                <span class="vocab-item">le patinage</span>
+                                <span class="vocab-item">lancer</span>
+                                <span class="vocab-item">un concurrent</span>
+                                <span class="vocab-item">une épreuve</span>
+                                <span class="vocab-item">se rendre compte</span>
+                                <span class="vocab-item">un entretien</span>
+                                <span class="vocab-item">afin de</span>
+                                <span class="vocab-item">la beauté</span>
+                                <span class="vocab-item">bien que</span>
+                                <span class="vocab-item">la jeunesse</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- B1+ Intensif 2 Category -->
+            <div class="story-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-star-half-alt"></i> B1+ Intensif 2</h3>
+                    <button class="category-toggle-btn">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="category-content" style="display: none;">
+                    <div class="stories-container">
+                        <!-- Story 9 -->
+                        <div class="story-card">
+                            <div class="story-header">
+                                <div class="story-title-section">
+                                    <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story9', this)">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <h3>Príbeh 9: Gestion financière</h3>
+                                </div>
+                                <button class="story-toggle-btn">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="story-content">
+                                <div class="story-text">
+                                    <p><strong>Dès que</strong> Marc reçut son salaire, il se rendit <strong>aussitôt</strong> à <strong>un guichet</strong> de sa banque pour <strong>retirer</strong> une partie en espèces. Il hésita entre <strong>payer en espèces</strong> et <strong>payer en liquide</strong> ses achats du week-end, mais décida finalement de régler <strong>par carte</strong> au supermarché. Pour certains services, il utilisait encore <strong>un chèque</strong> ou payait <strong>par virement</strong>, selon la demande.</p>
+
+                                    <p>En sortant, il passa devant <strong>un distributeur de billets</strong> afin de compléter son portefeuille. Dans <strong>un porte-monnaie</strong>, il glissa <strong>une pièce</strong> de deux euros, <strong>un billet</strong> de vingt et même quelques <strong>centimes</strong> oubliés. Comme il voyageait souvent, il avait aussi une <strong>une devise</strong> étrangère en réserve.</p>
+
+                                    <p>Un ami lui raconta un jour comment certaines personnes pouvaient <strong>blanchir</strong> de l'argent, et même <strong>blanchir d'argent</strong> à travers des commerces fictifs. Marc, choqué, décida qu'il n'avait rien à voir avec ce monde.</p>
+
+                                    <p>Au marché, il demanda à <strong>l'épicier</strong> de lui <strong>faire la monnaie sur 5000</strong>. Le commerçant sourit et promit de <strong>rendre la monnaie</strong> rapidement. Marc observa <strong>l'épicerie</strong>, repérant les fruits et légumes frais disposés avec soin.</p>
+
+                                    <p>Plus tard, Marc dut prendre la parole devant un public. Il sentit <strong>le trac</strong> monter, mais garda le sourire. Dans la salle, un ami prenait des photos pour garder <strong>la trace</strong> de l'événement.</p>
+
+                                    <p>Quelques jours après, Marc participa à <strong>un sondage d'opinion</strong> sur la consommation locale. On lui proposa aussi de répondre à <strong>un micro-trottoir</strong> pour la radio, parlant de la façon dont il dépensait sa <strong>somme d'argent de poche</strong>. Il expliqua qu'avec son <strong>l'argent de poche</strong>, il devait <strong>se débrouiller</strong> pour tout payer : sorties, transports et parfois cadeaux.</p>
+
+                                    <p>Pour y parvenir, il apprit à <strong>gérer</strong> son budget avec soin. Il écouta <strong>l'enregistrement</strong> d'une conférence sur la gestion financière et visita <strong>l'établissement</strong> bancaire où il avait ouvert son premier compte.</p>
+
+                                    <p>En rentrant chez lui, il se dit que la vraie richesse, ce n'était pas seulement l'argent, mais aussi les expériences qu'on vivait et qu'on savait apprécier.</p>
+                                </div>
+                                <div class="story-vocabulary">
+                                    <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                                    <div class="vocabulary-grid">
+                                        <span class="vocab-item">dès que</span>
+                                        <span class="vocab-item">aussitôt</span>
+                                        <span class="vocab-item">un guichet</span>
+                                        <span class="vocab-item">retirer</span>
+                                        <span class="vocab-item">payer en espèces</span>
+                                        <span class="vocab-item">payer en liquide</span>
+                                        <span class="vocab-item">par carte</span>
+                                        <span class="vocab-item">un chèque</span>
+                                        <span class="vocab-item">par virement</span>
+                                        <span class="vocab-item">un distributeur de billets</span>
+                                        <span class="vocab-item">un porte-monnaie</span>
+                                        <span class="vocab-item">une pièce</span>
+                                        <span class="vocab-item">un billet</span>
+                                        <span class="vocab-item">centimes</span>
+                                        <span class="vocab-item">une devise</span>
+                                        <span class="vocab-item">blanchir</span>
+                                        <span class="vocab-item">blanchir d'argent</span>
+                                        <span class="vocab-item">l'épicier</span>
+                                        <span class="vocab-item">faire la monnaie sur 5000</span>
+                                        <span class="vocab-item">rendre la monnaie</span>
+                                        <span class="vocab-item">l'épicerie</span>
+                                        <span class="vocab-item">le trac</span>
+                                        <span class="vocab-item">la trace</span>
+                                        <span class="vocab-item">un sondage d'opinion</span>
+                                        <span class="vocab-item">un micro-trottoir</span>
+                                        <span class="vocab-item">somme d'argent de poche</span>
+                                        <span class="vocab-item">l'argent de poche</span>
+                                        <span class="vocab-item">se débrouiller</span>
+                                        <span class="vocab-item">gérer</span>
+                                        <span class="vocab-item">l'enregistrement</span>
+                                        <span class="vocab-item">l'établissement</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Story 10 -->
+                        <div class="story-card">
+                            <div class="story-header">
+                                <div class="story-title-section">
+                                    <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story10', this)">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <h3>Príbeh 10: Problèmes de circulation</h3>
+                                </div>
+                                <button class="story-toggle-btn">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="story-content">
+                                <div class="story-text">
+                                    <p>Ce soir-là, <strong>le narrateur</strong> observait la rue depuis son balcon. Il pensait à ses <strong>rapports</strong> compliqués avec son frère, garé en bas sur une vieille voiture au <strong>cuir</strong> usé. Ce dernier adorait <strong>se vanter</strong> de connaître <strong>le garagiste</strong> du quartier et d'obtenir toujours le dernier <strong>le modèle</strong> à la mode.</p>
+
+                                    <p>Pourtant, depuis qu'il avait appris sa <strong>la paternité</strong>, il s'intéressait moins aux courses de voitures et plus à réparer lui-même <strong>l'engin</strong>. Quant à <strong>l'engine</strong>, il faisait un bruit inquiétant, presque suffocant.</p>
+
+                                    <p>Un jour, il commit une petite erreur qui lui valut <strong>la peine</strong> de perdre <strong>le permis</strong> pendant un mois. Ce fut pour lui un moment d'<strong>effroi</strong>, et ses illusions furent comme <strong>effacées</strong>. Il dut alors payer ses dettes par petites <strong>mensualités</strong>, incapable de <strong>payer comptant</strong> comme avant.</p>
+
+                                    <p>Un soir, <strong>vexé</strong> après une dispute, il se dit : « <strong>Décidément</strong>, je sais <strong>commettre gaffe sur gaffe</strong>. » Il se consola en comptant <strong>des liasses de billets</strong> bien cachées dans un tiroir. Son appartement était toujours <strong>rangé</strong>, et chaque objet avait sa place.</p>
+
+                                    <p>Pendant l'été, il faillit <strong>suffoquer</strong> en travaillant à <strong>la caisse</strong> d'un supermarché sans climatisation. « <strong>Faisons</strong> quelque chose, je n'en peux plus », dit-il au directeur. Celui-ci mit un ventilateur à sa <strong>disposition</strong>.</p>
+
+                                    <p>Un matin, il dut <strong>livrer</strong> un colis. <strong>Lorsqu'il monta dedans</strong> le camion, il sentit le volant <strong>toucher</strong> ses genoux et, <strong>délicatement</strong>, il ajusta son siège. Après avoir <strong>essuyer le front</strong> en sueur, il reprit la route.</p>
+
+                                    <p>Sur le chemin, il croisa une charrette <strong>verdâtre</strong> <strong>tirées par des chevaux</strong>, remplie de sacs de <strong>la récolte</strong> de blé. Un paysan lui montra <strong>un truc</strong> pour éviter la boue. Il nota cela dans <strong>un manuel</strong> qu'il transportait dans son sac.</p>
+
+                                    <p>En passant devant un dépôt, il vit un tas de <strong>la ferraille</strong> rouillée et, à côté, un <strong>chameau</strong> et un <strong>dromadaire</strong> utilisés pour attirer les touristes.</p>
+
+                                    <p>Enfin arrivé, il dut <strong>tenir</strong> une longue file de clients avant de s'asseoir sur <strong>la banquette</strong> de la salle d'attente. Sur la table, il remarqua <strong>une miette</strong> de pain et un vieux magazine.</p>
+
+                                    <p>L'après-midi, il rejoignit <strong>un moniteur</strong> d'auto-école qui lui promit qu'il pourrait repasser son permis <strong>sitôt</strong> que ses points seraient rétablis. En revenant chez lui, il se retrouva coincé dans <strong>la circulation</strong>, repensant à tout ce qu'il avait vécu ces derniers mois.</p>
+                                </div>
+                                <div class="story-vocabulary">
+                                    <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                                    <div class="vocabulary-grid">
+                                        <span class="vocab-item">le narrateur</span>
+                                        <span class="vocab-item">rapports</span>
+                                        <span class="vocab-item">cuir</span>
+                                        <span class="vocab-item">se vanter</span>
+                                        <span class="vocab-item">le garagiste</span>
+                                        <span class="vocab-item">le modèle</span>
+                                        <span class="vocab-item">la paternité</span>
+                                        <span class="vocab-item">l'engin</span>
+                                        <span class="vocab-item">l'engine</span>
+                                        <span class="vocab-item">la peine</span>
+                                        <span class="vocab-item">le permis</span>
+                                        <span class="vocab-item">effroi</span>
+                                        <span class="vocab-item">effacées</span>
+                                        <span class="vocab-item">mensualités</span>
+                                        <span class="vocab-item">payer comptant</span>
+                                        <span class="vocab-item">vexé</span>
+                                        <span class="vocab-item">décidément</span>
+                                        <span class="vocab-item">commettre gaffe sur gaffe</span>
+                                        <span class="vocab-item">des liasses de billets</span>
+                                        <span class="vocab-item">rangé</span>
+                                        <span class="vocab-item">suffoquer</span>
+                                        <span class="vocab-item">la caisse</span>
+                                        <span class="vocab-item">faisons</span>
+                                        <span class="vocab-item">disposition</span>
+                                        <span class="vocab-item">livrer</span>
+                                        <span class="vocab-item">lorsqu'il monta dedans</span>
+                                        <span class="vocab-item">toucher</span>
+                                        <span class="vocab-item">délicatement</span>
+                                        <span class="vocab-item">essuyer le front</span>
+                                        <span class="vocab-item">verdâtre</span>
+                                        <span class="vocab-item">tirées par des chevaux</span>
+                                        <span class="vocab-item">la récolte</span>
+                                        <span class="vocab-item">un truc</span>
+                                        <span class="vocab-item">un manuel</span>
+                                        <span class="vocab-item">la ferraille</span>
+                                        <span class="vocab-item">chameau</span>
+                                        <span class="vocab-item">dromadaire</span>
+                                        <span class="vocab-item">tenir</span>
+                                        <span class="vocab-item">la banquette</span>
+                                        <span class="vocab-item">une miette</span>
+                                        <span class="vocab-item">un moniteur</span>
+                                        <span class="vocab-item">sitôt</span>
+                                        <span class="vocab-item">la circulation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Story 11 -->
+                        <div class="story-card">
+                            <div class="story-header">
+                                <div class="story-title-section">
+                                    <button class="story-speaker-btn" onclick="event.stopPropagation(); readStory('story11', this)">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <h3>Príbeh 11: Réunion d'équipe sportive</h3>
+                                </div>
+                                <button class="story-toggle-btn">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="story-content">
+                                <div class="story-text">
+                                    <p>Lors de la réunion, le coach expliqua que le résultat final <strong>devrait être</strong> annoncé demain, mais qu'il <strong>aurait dû être</strong> communiqué la veille. Il commença par <strong>l'éloge</strong> des joueurs, avant d'<strong>affirmer</strong> que chacun avait donné le meilleur de lui-même.</p>
+
+                                    <p>Un journaliste réussit à <strong>repérer</strong> l'entraîneur près de la sortie pour lui poser quelques questions. On lui demanda s'il pouvait <strong>estimer</strong> les chances de son équipe, mais il avoua <strong>craindre</strong> que la préparation ne soit pas <strong>suffisamment</strong> complète pour atteindre <strong>le but</strong> fixé.</p>
+
+                                    <p>Il tenta de <strong>convaincre</strong> les supporters que, <strong>évidemment</strong>, tout n'était pas perdu. L'équipe pouvait <strong>sûrement</strong> encore gagner, <strong>certainement</strong> même, et <strong>sans aucun doute</strong> elle méritait leur confiance.</p>
+
+                                    <p>Après le match, le capitaine proposa de <strong>se détendre</strong> autour d'un dessert : tarte à <strong>la myrtille</strong> et <strong>le fromage blanc</strong>. Mais sur le chemin, ils restèrent bloqués dans <strong>un embouteillage</strong>, ou plutôt dans <strong>un bouchon</strong> monstre causé par un accident.</p>
+
+                                    <p>En attendant, ils discutaient de ce que certains appelaient <strong>l'âge de vitrine</strong> pour les sportifs — le moment où ils sont au sommet de leur carrière. L'un d'eux raconta comment les fans pouvaient parfois <strong>se moquer de qqn</strong> ou <strong>rire de qqn</strong> dès qu'il faisait une erreur, ce qui nuisait à <strong>la détente</strong> nécessaire avant les compétitions.</p>
+
+                                    <p>Le coach expliqua que, pour progresser, il fallait <strong>augmenter</strong> l'intensité de l'<strong>entraînement</strong>, mais aussi <strong>parcourir</strong> de nouvelles méthodes. Il insista sur les <strong>bienfaits</strong> des voyages et des nouveaux <strong>trajets</strong> pour varier la routine.</p>
+
+                                    <p>Cependant, un joueur se blessa légèrement — <strong>une entorse</strong> après avoir glissé sur <strong>une plaque de verglas</strong> devant le gymnase. Comme les <strong>les émissions</strong> de sport à la télé étaient <strong>interrompues</strong> par une panne, ils décidèrent de se concentrer sur leur récupération.</p>
+
+                                    <p>L'entraîneur remercia les fans « en <strong>ma faveur</strong> » et promit d'<strong>intervenir</strong> rapidement pour améliorer la situation. Il termina en disant que, même si parfois <strong>c'est suspect</strong>, <strong>c'est louche</strong> ou <strong>c'est étrange</strong> dans le monde du sport, la passion reste la même.</p>
+                                </div>
+                                <div class="story-vocabulary">
+                                    <h4><i class="fas fa-lightbulb"></i> Kľúčové slovíčka v príbehu:</h4>
+                                    <div class="vocabulary-grid">
+                                        <span class="vocab-item">devrait être</span>
+                                        <span class="vocab-item">aurait dû être</span>
+                                        <span class="vocab-item">l'éloge</span>
+                                        <span class="vocab-item">affirmer</span>
+                                        <span class="vocab-item">repérer</span>
+                                        <span class="vocab-item">estimer</span>
+                                        <span class="vocab-item">craindre</span>
+                                        <span class="vocab-item">suffisamment</span>
+                                        <span class="vocab-item">le but</span>
+                                        <span class="vocab-item">convaincre</span>
+                                        <span class="vocab-item">évidemment</span>
+                                        <span class="vocab-item">sûrement</span>
+                                        <span class="vocab-item">certainement</span>
+                                        <span class="vocab-item">sans aucun doute</span>
+                                        <span class="vocab-item">se détendre</span>
+                                        <span class="vocab-item">la myrtille</span>
+                                        <span class="vocab-item">le fromage blanc</span>
+                                        <span class="vocab-item">un embouteillage</span>
+                                        <span class="vocab-item">un bouchon</span>
+                                        <span class="vocab-item">l'âge de vitrine</span>
+                                        <span class="vocab-item">se moquer de qqn</span>
+                                        <span class="vocab-item">rire de qqn</span>
+                                        <span class="vocab-item">la détente</span>
+                                        <span class="vocab-item">augmenter</span>
+                                        <span class="vocab-item">entraînement</span>
+                                        <span class="vocab-item">parcourir</span>
+                                        <span class="vocab-item">bienfaits</span>
+                                        <span class="vocab-item">trajets</span>
+                                        <span class="vocab-item">une entorse</span>
+                                        <span class="vocab-item">une plaque de verglas</span>
+                                        <span class="vocab-item">les émissions</span>
+                                        <span class="vocab-item">interrompues</span>
+                                        <span class="vocab-item">ma faveur</span>
+                                        <span class="vocab-item">intervenir</span>
+                                        <span class="vocab-item">c'est suspect</span>
+                                        <span class="vocab-item">c'est louche</span>
+                                        <span class="vocab-item">c'est étrange</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -558,6 +558,11 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const targetId = button.dataset.target;
             
+            // Stop story reading when leaving stories section
+            if (targetId !== 'stories-section' && isCurrentlyReading) {
+                resetStoryPosition();
+            }
+            
             // Skry všetky sekcie a zruš aktívny stav tlačidiel
             sections.forEach(section => section.classList.remove('active'));
             navButtons.forEach(btn => btn.classList.remove('active'));
@@ -2107,8 +2112,458 @@ document.addEventListener('DOMContentLoaded', () => {
         if (exercises.length > 0) {
             loadExercise(currentExerciseIndex);
         }
+        
+        // Inicializuj príbehy
+        initializeStories();
     }
+
+    // === STORIES FUNCTIONALITY ===
+    function initializeStories() {
+        const storyHeaders = document.querySelectorAll('.story-header');
+        
+        storyHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const storyCard = this.parentElement;
+                const storyContent = storyCard.querySelector('.story-content');
+                const toggleBtn = storyCard.querySelector('.story-toggle-btn');
+                
+                // Toggle expanded class
+                if (storyContent.classList.contains('expanded')) {
+                    // Collapse
+                    storyContent.classList.remove('expanded');
+                    toggleBtn.classList.remove('active');
+                } else {
+                    // Expand
+                    storyContent.classList.add('expanded');
+                    toggleBtn.classList.add('active');
+                }
+            });
+        });
+        
+        // Add vocabulary item click handlers
+        const vocabItems = document.querySelectorAll('.vocab-item');
+        vocabItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const word = this.textContent.trim();
+                // You could add functionality here to show word details or add to favorites
+                console.log('Clicked vocabulary word:', word);
+            });
+        });
+    }
+
+    // === STORY READING FUNCTIONALITY ===
+    let currentSpeechUtterance = null;
+    let isCurrentlyReading = false;
+    let currentStoryWords = [];
+    let currentWordIndex = 0;
+    let currentStoryId = null;
+    let highlightInterval = null;
+    let pausedAtSentenceIndex = 0; // Track where we paused
+    let isManualStop = false; // Flag to distinguish manual stop from error
+
+    function readStory(storyId, buttonElement) {
+        if (!frenchVoice) {
+            alert('Prosím, najskôr si vyberte hlas v nastaveniach.');
+            return;
+        }
+
+        const speakerBtn = buttonElement || document.querySelector('.story-speaker-btn');
+        
+        // Simple on/off toggle logic
+        if (isCurrentlyReading && currentStoryId === storyId) {
+            // Currently reading this story - STOP it
+            stopStoryReading();
+            console.log('Stopped reading, saved position:', pausedAtSentenceIndex);
+            return;
+        }
+        
+        // Not reading or different story - START reading
+        if (currentStoryId === storyId && pausedAtSentenceIndex > 0) {
+            // Resume from saved position
+            console.log('Resuming from sentence:', pausedAtSentenceIndex);
+            startFromSentence(storyId, pausedAtSentenceIndex, speakerBtn);
+        } else {
+            // Start from beginning
+            pausedAtSentenceIndex = 0;
+            startFromSentence(storyId, 0, speakerBtn);
+        }
+    }
+
+    function startFromSentence(storyId, startSentenceIndex, speakerBtn) {
+        // Stop any current speech and reset highlighting
+        stopStoryReading();
+        
+        // Get the story text and prepare sentences for highlighting
+        let storyText = '';
+        let storySentences = [];
+        
+        if (storyId === 'story1' || storyId === 'story2' || storyId === 'story3' || storyId === 'story4' || storyId === 'story5' || storyId === 'story6' || storyId === 'story7' || storyId === 'story8' || storyId === 'story9' || storyId === 'story10' || storyId === 'story11') {
+            // Find the specific story element based on storyId
+            let storyElement = null;
+            
+            if (storyId === 'story1') {
+                storyElement = document.querySelector('.story-card:nth-child(1) .story-text');
+            } else if (storyId === 'story2') {
+                storyElement = document.querySelector('.story-card:nth-child(2) .story-text');
+            } else if (storyId === 'story3') {
+                storyElement = document.querySelector('.story-card:nth-child(3) .story-text');
+            } else if (storyId === 'story4') {
+                storyElement = document.querySelector('.story-card:nth-child(4) .story-text');
+            } else if (storyId === 'story5') {
+                storyElement = document.querySelector('.story-card:nth-child(5) .story-text');
+            } else if (storyId === 'story6') {
+                storyElement = document.querySelector('.story-card:nth-child(6) .story-text');
+            } else if (storyId === 'story7') {
+                storyElement = document.querySelector('.story-card:nth-child(7) .story-text');
+            } else if (storyId === 'story8') {
+                storyElement = document.querySelector('.story-card:nth-child(8) .story-text');
+            } else if (storyId === 'story9') {
+                // Story 9 is in the second category
+                storyElement = document.querySelector('.story-category:nth-child(2) .story-card:nth-child(1) .story-text');
+            } else if (storyId === 'story10') {
+                // Story 10 is in the second category
+                storyElement = document.querySelector('.story-category:nth-child(2) .story-card:nth-child(2) .story-text');
+            } else if (storyId === 'story11') {
+                // Story 11 is in the second category
+                storyElement = document.querySelector('.story-category:nth-child(2) .story-card:nth-child(3) .story-text');
+            }
+            
+            if (storyElement) {
+                const paragraphs = storyElement.querySelectorAll('p');
+                paragraphs.forEach((p, pIndex) => {
+                    const text = p.textContent.trim();
+                    // Split by sentence endings, keep the punctuation
+                    const sentences = text.split(/(?<=[.!?])\s+/).filter(s => s.trim());
+                    
+                    sentences.forEach((sentence, sIndex) => {
+                        if (sentence.trim()) {
+                            storySentences.push({
+                                text: sentence.trim(),
+                                paragraphIndex: pIndex,
+                                sentenceIndex: sIndex,
+                                element: p,
+                                words: sentence.trim().split(/\s+/)
+                            });
+                            storyText += sentence.trim() + ' ';
+                        }
+                    });
+                });
+            }
+        }
+        
+        currentStoryWords = storySentences;
+        
+        // Create text from startSentenceIndex onwards
+        let textFromStartSentence = '';
+        let allWords = [];
+        let wordToSentenceMap = [];
+        let wordIndexOffset = 0;
+        
+        // Calculate word offset for sentences before startSentenceIndex
+        for (let i = 0; i < Math.min(startSentenceIndex, storySentences.length); i++) {
+            wordIndexOffset += storySentences[i].words.length;
+        }
+        
+        storySentences.forEach((sentence, sentenceIndex) => {
+            sentence.words.forEach(word => {
+                allWords.push(word);
+                wordToSentenceMap.push(sentenceIndex);
+            });
+            
+            // Only add sentences from startSentenceIndex onwards to the speech text
+            if (sentenceIndex >= startSentenceIndex) {
+                textFromStartSentence += sentence.text + ' ';
+            }
+        });
+        
+        window.currentWordToSentenceMap = wordToSentenceMap;
+        window.currentStorySentences = storySentences;
+        window.wordIndexOffset = wordIndexOffset; // Store offset for boundary calculations
+        
+        if (!textFromStartSentence.trim()) {
+            alert('Príbeh sa nenašiel alebo už je dokončený.');
+            return;
+        }
+
+        currentStoryId = storyId;
+        currentWordIndex = wordIndexOffset; // Start from the correct word index
+        
+        console.log(`Starting from sentence ${startSentenceIndex}, word offset: ${wordIndexOffset}`);
+        
+        // Create speech synthesis utterance with text from start sentence
+        currentSpeechUtterance = new SpeechSynthesisUtterance(textFromStartSentence.trim());
+        currentSpeechUtterance.voice = frenchVoice;
+        currentSpeechUtterance.rate = 0.8; // Slower for better word tracking
+        currentSpeechUtterance.pitch = 1;
+        currentSpeechUtterance.volume = 1;
+
+        // Visual feedback
+        if (speakerBtn) {
+            speakerBtn.classList.add('playing');
+        }
+        
+        isCurrentlyReading = true;
+        let currentBoundaryWordIndex = wordIndexOffset; // Start from the offset
+        let lastHighlightedSentenceIndex = startSentenceIndex - 1; // Start from previous sentence
+        
+        currentSpeechUtterance.onstart = () => {
+            isCurrentlyReading = true;
+            if (speakerBtn) {
+                speakerBtn.classList.add('playing');
+            }
+            
+            // Check if onboundary is supported
+            if (!('onboundary' in currentSpeechUtterance)) {
+                console.log('onboundary not supported, using fallback');
+                startWordHighlighting();
+            } else {
+                console.log('Using real-time boundary synchronization');
+            }
+        };
+        
+        // Real-time synchronization with speech
+        currentSpeechUtterance.onboundary = (event) => {
+            if (!isCurrentlyReading) return;
+            
+            // This event fires for each word boundary
+            if (event.name === 'word') {
+                const wordToSentenceMap = window.currentWordToSentenceMap;
+                const storySentences = window.currentStorySentences;
+                
+                if (wordToSentenceMap && storySentences && currentBoundaryWordIndex < wordToSentenceMap.length) {
+                    const sentenceIndex = wordToSentenceMap[currentBoundaryWordIndex];
+                    
+                    // Update pause position continuously
+                    pausedAtSentenceIndex = sentenceIndex;
+                    
+                    // Only highlight if we moved to a new sentence
+                    if (sentenceIndex !== lastHighlightedSentenceIndex && sentenceIndex >= 0) {
+                        removeWordHighlighting();
+                        highlightSentenceByIndex(sentenceIndex);
+                        lastHighlightedSentenceIndex = sentenceIndex;
+                    }
+                    
+                    currentBoundaryWordIndex++;
+                }
+            }
+        };
+        
+        currentSpeechUtterance.onend = () => {
+            stopStoryReading();
+        };
+        
+        currentSpeechUtterance.onerror = (event) => {
+            console.log('Speech error event:', event);
+            
+            if (!isManualStop) {
+                // Only show error for actual errors, not manual stops
+                alert('Chyba pri čítaní príbehu.');
+            }
+            
+            // Clean up regardless
+            if (isCurrentlyReading) {
+                isCurrentlyReading = false;
+                currentSpeechUtterance = null;
+                
+                // Remove visual feedback
+                const allSpeakerBtns = document.querySelectorAll('.story-speaker-btn');
+                allSpeakerBtns.forEach(btn => {
+                    btn.classList.remove('playing');
+                });
+                
+                removeWordHighlighting();
+            }
+        };
+
+        // Start speaking
+        speechSynthesis.speak(currentSpeechUtterance);
+    }
+
+    function stopStoryReading() {
+        isManualStop = true; // Set flag before canceling
+        speechSynthesis.cancel();
+        isCurrentlyReading = false;
+        currentSpeechUtterance = null;
+        // Keep currentStoryId and pausedAtSentenceIndex for resume
+        currentWordIndex = 0;
+        
+        console.log('Stopping at sentence:', pausedAtSentenceIndex);
+        
+        // Clear global variables
+        window.currentWordToSentenceMap = null;
+        window.currentStorySentences = null;
+        window.wordIndexOffset = null;
+        
+        // Clear highlighting interval
+        if (highlightInterval) {
+            clearInterval(highlightInterval);
+            highlightInterval = null;
+        }
+        
+        // Remove visual feedback from all speaker buttons
+        const allSpeakerBtns = document.querySelectorAll('.story-speaker-btn');
+        allSpeakerBtns.forEach(btn => {
+            btn.classList.remove('playing');
+        });
+        
+        // Remove word highlighting
+        removeWordHighlighting();
+        
+        // Reset flag after a brief delay
+        setTimeout(() => {
+            isManualStop = false;
+        }, 100);
+    }
+
+    function resetStoryPosition() {
+        // Complete reset for new story or section change
+        isManualStop = true; // Set flag to prevent error message
+        stopStoryReading();
+        currentStoryId = null;
+        pausedAtSentenceIndex = 0;
+        console.log('Story position completely reset');
+    }
+
+    function highlightSentenceByIndex(sentenceIndex) {
+        const storySentences = window.currentStorySentences;
+        if (!storySentences || sentenceIndex >= storySentences.length) return;
+        
+        const sentence = storySentences[sentenceIndex];
+        if (sentence && sentence.element) {
+            // Mark the paragraph for highlighting with the specific sentence
+            sentence.element.setAttribute('data-highlighted-sentence', sentence.text);
+            sentence.element.classList.add('sentence-highlight');
+            
+            console.log('Highlighting sentence:', sentence.text.substring(0, 50) + '...');
+        }
+    }
+
+    function startWordHighlighting() {
+        // This function is now deprecated - using onboundary instead
+        // Keep it for fallback if onboundary is not supported
+        console.log('Using fallback highlighting method');
+        
+        if (!isCurrentlyReading) return;
+        
+        // Clear any existing interval
+        if (highlightInterval) {
+            clearInterval(highlightInterval);
+        }
+        
+        // Fallback sentence highlighting
+        const intervalMs = 3000; // Slower fallback timing
+        
+        highlightInterval = setInterval(() => {
+            if (!isCurrentlyReading || currentWordIndex >= currentStoryWords.length) {
+                clearInterval(highlightInterval);
+                highlightInterval = null;
+                removeWordHighlighting();
+                return;
+            }
+            
+            highlightCurrentSentence();
+            currentWordIndex++;
+        }, intervalMs);
+    }
+
+    function highlightCurrentSentence() {
+        // Remove all previous highlighting
+        removeWordHighlighting();
+        
+        if (currentWordIndex < currentStoryWords.length) {
+            const currentSentence = currentStoryWords[currentWordIndex];
+            const targetParagraph = currentSentence.element;
+            
+            if (targetParagraph && currentSentence.text) {
+                // Get the current HTML content
+                let innerHTML = targetParagraph.innerHTML;
+                
+                // Escape special regex characters in the sentence
+                const escapedSentence = currentSentence.text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                
+                // Create a more precise regex that matches the sentence
+                const sentenceRegex = new RegExp(escapedSentence, 'i');
+                
+                // Replace the sentence with highlighted version
+                if (sentenceRegex.test(targetParagraph.textContent)) {
+                    // Find the sentence in text content and replace it in innerHTML
+                    const textContent = targetParagraph.textContent;
+                    const startIndex = textContent.toLowerCase().indexOf(currentSentence.text.toLowerCase());
+                    
+                    if (startIndex !== -1) {
+                        // Mark the paragraph for highlighting
+                        targetParagraph.setAttribute('data-highlighted-sentence', currentSentence.text);
+                        targetParagraph.classList.add('sentence-highlight');
+                    }
+                }
+            }
+        }
+    }
+
+    function removeWordHighlighting() {
+        // Remove highlighting from all stories
+        const allStoryElements = document.querySelectorAll('.story-text');
+        allStoryElements.forEach(storyElement => {
+            const paragraphs = storyElement.querySelectorAll('p');
+            paragraphs.forEach(p => {
+                p.classList.remove('sentence-highlight');
+                p.removeAttribute('data-highlighted-sentence');
+            });
+        });
+    }
+
+    // Make readStory function globally available
+    window.readStory = readStory;
+
+    // Stop reading when page is about to unload
+    window.addEventListener('beforeunload', () => {
+        if (isCurrentlyReading) {
+            stopStoryReading();
+        }
+    });
+
+    // Stop reading when page loses focus
+    window.addEventListener('blur', () => {
+        if (isCurrentlyReading && speechSynthesis.speaking) {
+            speechSynthesis.pause();
+            const speakerBtn = document.querySelector('.story-speaker-btn.playing');
+            if (speakerBtn) {
+                speakerBtn.classList.remove('playing');
+            }
+        }
+    });
 
     initialize();
 
+});
+
+// Story Categories Toggle Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize category toggles
+    const categoryHeaders = document.querySelectorAll('.category-header');
+    
+    categoryHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const categoryContent = this.nextElementSibling;
+            const toggleIcon = this.querySelector('.category-toggle-btn i');
+            
+            // Toggle category content
+            if (categoryContent.style.display === 'none') {
+                categoryContent.style.display = 'block';
+                this.classList.add('expanded');
+            } else {
+                categoryContent.style.display = 'none';
+                this.classList.remove('expanded');
+            }
+        });
+    });
+    
+    // Set first category (B1+ Intensif) to be expanded by default
+    const firstCategoryHeader = document.querySelector('.category-header');
+    const firstCategoryContent = document.querySelector('.category-content');
+    
+    if (firstCategoryHeader && firstCategoryContent) {
+        firstCategoryContent.style.display = 'block';
+        firstCategoryHeader.classList.add('expanded');
+    }
 });
