@@ -2169,6 +2169,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const speakerBtn = buttonElement || document.querySelector('.story-speaker-btn');
         
+        // Auto-expand category if story is in a collapsed category
+        if (storyId === 'story9' || storyId === 'story10' || storyId === 'story11') {
+            const secondCategory = document.querySelector('.story-category:nth-child(2) .category-content');
+            const secondCategoryHeader = document.querySelector('.story-category:nth-child(2) .category-header');
+            if (secondCategory && secondCategory.style.display === 'none') {
+                secondCategory.style.display = 'block';
+                if (secondCategoryHeader) {
+                    secondCategoryHeader.classList.add('expanded');
+                }
+            }
+        }
+        
         // Simple on/off toggle logic
         if (isCurrentlyReading && currentStoryId === storyId) {
             // Currently reading this story - STOP it
@@ -2218,14 +2230,35 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (storyId === 'story8') {
                 storyElement = document.querySelector('.story-card:nth-child(8) .story-text');
             } else if (storyId === 'story9') {
-                // Story 9 is in the second category
-                storyElement = document.querySelector('.story-category:nth-child(2) .story-card:nth-child(1) .story-text');
+                // Story 9 is in the second category - find by story ID more reliably
+                const allStoryCards = document.querySelectorAll('.story-card');
+                for (let card of allStoryCards) {
+                    const speaker = card.querySelector('.story-speaker-btn');
+                    if (speaker && speaker.getAttribute('onclick') && speaker.getAttribute('onclick').includes('story9')) {
+                        storyElement = card.querySelector('.story-text');
+                        break;
+                    }
+                }
             } else if (storyId === 'story10') {
                 // Story 10 is in the second category
-                storyElement = document.querySelector('.story-category:nth-child(2) .story-card:nth-child(2) .story-text');
+                const allStoryCards = document.querySelectorAll('.story-card');
+                for (let card of allStoryCards) {
+                    const speaker = card.querySelector('.story-speaker-btn');
+                    if (speaker && speaker.getAttribute('onclick') && speaker.getAttribute('onclick').includes('story10')) {
+                        storyElement = card.querySelector('.story-text');
+                        break;
+                    }
+                }
             } else if (storyId === 'story11') {
                 // Story 11 is in the second category
-                storyElement = document.querySelector('.story-category:nth-child(2) .story-card:nth-child(3) .story-text');
+                const allStoryCards = document.querySelectorAll('.story-card');
+                for (let card of allStoryCards) {
+                    const speaker = card.querySelector('.story-speaker-btn');
+                    if (speaker && speaker.getAttribute('onclick') && speaker.getAttribute('onclick').includes('story11')) {
+                        storyElement = card.querySelector('.story-text');
+                        break;
+                    }
+                }
             }
             
             if (storyElement) {
